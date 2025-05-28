@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Biomais/RH</title>
+    <link rel="stylesheet" href="../assets/css/style-modern.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aller:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../assets/css/chat-style.css" />
+    <script src="../assets/js/main.js" defer></script>
+    <script src="js/gaia-chat.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="header-container">
+          <div class="logo">
+            <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+          </div>
+          <nav class="main-nav">
+            <div class="nav-container">
+              <ul class="nav-tabs">
+                <li>
+                  <a href="#mural" class="active" data-tab="mural">Mural</a>
+                </li>
+                <li>
+                  <a href="#gestao-cadastros" data-tab="gestao-cadastros"
+                    >Gestão de Cadastros</a
+                  >
+                </li>
+                <li>
+                  <a href="#monitoramento" data-tab="monitoramento"
+                    >Monitoramento de Clima</a
+                  >
+                </li>
+                <li>
+                  <a href="#ouvidoria" data-tab="ouvidoria"
+                    >Ouvidoria do Colaborador</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#gestao-requerimentos"
+                    data-tab="gestao-requerimentos"
+                    >Gestão de Requerimentos</a
+                  >
+                </li>
+                <li>
+                  <a href="#franquias-engajadas" data-tab="franquias-engajadas"
+                    >Franquias Engajadas</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <a href="../index.html" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Sair
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <!-- Aba MURAL -->
+        <div id="mural" class="tab-content tab-pane active">
+          <h2>Mural de Reconhecimento</h2>
+
+          <div class="card">
+            <h3>Equipes Ganhadoras - Prêmios de Gestão de Pessoas</h3>
+            <div class="gallery">
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/equipe-1.jpg"
+                  alt="Equipe 1º Lugar"
+                />
+                <div class="gallery-caption">
+                  1º Lugar - Bio Shopping DF Plaza
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/equipe-2.jpg"
+                  alt="Equipe 2º Lugar"
+                />
+                <div class="gallery-caption">
+                  2º Lugar - Bio Sams Club Águas Claras
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/equipe-3.jpg"
+                  alt="Equipe 3º Lugar"
+                />
+                <div class="gallery-caption">3º Lugar - Bio Araucárias</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba GESTÃO DE CADASTROS -->
+        <div id="gestao-cadastros" class="tab-content tab-pane">
+          <h2>Gestão de Cadastros</h2>
+
+          <div class="card">
+            <h3>Filtrar Cadastros</h3>
+            <form
+              id="filtroForm"
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                align-items: flex-end;
+              "
+            >
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroFranquia">Franquia:</label>
+                <select id="filtroFranquia" name="filtroFranquia">
+                  <option value="">Todas as Franquias</option>
+                  <option value="centro">Bio Shopping DF Plaza</option>
+                  <option value="norte">Bio Sams Club Águas Claras</option>
+                  <option value="sul">Bio Araucárias</option>
+                  <option value="leste">Bio Castanheiras</option>
+                  <option value="oeste">Bio Águas Claras Shopping</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroTipo">Tipo de Usuário:</label>
+                <select id="filtroTipo" name="filtroTipo">
+                  <option value="">Todos os Tipos</option>
+                  <option value="franqueado">Franqueado</option>
+                  <option value="gerente">Gerente</option>
+                  <option value="colaborador">Colaborador</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroBusca">Busca por Nome/CPF:</label>
+                <input
+                  type="text"
+                  id="filtroBusca"
+                  name="filtroBusca"
+                  placeholder="Digite nome ou CPF"
+                />
+              </div>
+              <button type="submit" class="btn" style="height: 42px">
+                Filtrar
+              </button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Cadastros por Franquia</h3>
+
+            <div class="tab-content" style="box-shadow: none; padding: 0">
+              <ul
+                class="nav-tabs"
+                style="
+                  background-color: #f5f5f5;
+                  justify-content: flex-start;
+                  padding: 10px 10px 0;
+                "
+              >
+                <li>
+                  <a
+                    href="#franquia-centro"
+                    class="active"
+                    style="background-color: #fff; color: var(--primary-color)"
+                    >Bio Shopping DF Plaza</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#franquia-norte"
+                    style="background-color: #fff; color: var(--primary-color)"
+                    >Bio Sams Club Águas Claras</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#franquia-sul"
+                    style="background-color: #fff; color: var(--primary-color)"
+                    >Bio Araucárias</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#franquia-leste"
+                    style="background-color: #fff; color: var(--primary-color)"
+                    >Bio Castanheiras</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#franquia-oeste"
+                    style="background-color: #fff; color: var(--primary-color)"
+                    >Bio Águas Claras Shopping</a
+                  >
+                </li>
+              </ul>
+
+              <!-- Franquia Centro -->
+              <div
+                id="franquia-centro"
+                class="tab-pane active"
+                style="padding: 20px; border: 1px solid #ddd; border-top: none"
+              >
+                <h4>Franqueado/Gestor</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>CPF</th>
+                      <th>Email</th>
+                      <th>Cargo</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Carlos Mendes</td>
+                      <td>987.654.321-00</td>
+                      <td>carlos.mendes@exemplo.com</td>
+                      <td>Franqueado</td>
+                      <td>
+                        <button
+                          class="btn"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Desativar
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Ana Oliveira</td>
+                      <td>876.543.210-00</td>
+                      <td>ana.oliveira@exemplo.com</td>
+                      <td>Gerente</td>
+                      <td>
+                        <button
+                          class="btn"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Desativar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h4 style="margin-top: 30px">Colaboradores</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>CPF</th>
+                      <th>Email</th>
+                      <th>Função</th>
+                      <th>Data de Ingresso</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>João da Silva</td>
+                      <td>123.456.789-00</td>
+                      <td>joao.silva@exemplo.com</td>
+                      <td>Atendente</td>
+                      <td>01/03/2023</td>
+                      <td>
+                        <button
+                          class="btn"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Desativar
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Maria Santos</td>
+                      <td>234.567.890-00</td>
+                      <td>maria.santos@exemplo.com</td>
+                      <td>Caixa</td>
+                      <td>15/04/2023</td>
+                      <td>
+                        <button
+                          class="btn"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Desativar
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Pedro Alves</td>
+                      <td>345.678.901-00</td>
+                      <td>pedro.alves@exemplo.com</td>
+                      <td>Estoquista</td>
+                      <td>10/05/2023</td>
+                      <td>
+                        <button
+                          class="btn"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          style="padding: 5px 10px; font-size: 0.9rem"
+                        >
+                          Desativar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Outras franquias seguiriam o mesmo padrão -->
+              <div
+                id="franquia-norte"
+                class="tab-pane"
+                style="padding: 20px; border: 1px solid #ddd; border-top: none"
+              >
+                <p>Dados da Franquia Norte seriam exibidos aqui.</p>
+              </div>
+
+              <div
+                id="franquia-sul"
+                class="tab-pane"
+                style="padding: 20px; border: 1px solid #ddd; border-top: none"
+              >
+                <p>Dados da Franquia Sul seriam exibidos aqui.</p>
+              </div>
+
+              <div
+                id="franquia-leste"
+                class="tab-pane"
+                style="padding: 20px; border: 1px solid #ddd; border-top: none"
+              >
+                <p>Dados da Franquia Leste seriam exibidos aqui.</p>
+              </div>
+
+              <div
+                id="franquia-oeste"
+                class="tab-pane"
+                style="padding: 20px; border: 1px solid #ddd; border-top: none"
+              >
+                <p>Dados da Franquia Oeste seriam exibidos aqui.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Criar Novo Cadastro</h3>
+            <button class="btn" onclick="toggleView('novoCadastroRHForm')">
+              Criar Novo Cadastro
+            </button>
+
+            <div
+              id="novoCadastroRHForm"
+              class="toggle-view"
+              style="display: none; margin-top: 20px"
+            >
+              <form id="formNovoCadastroRH">
+                <div class="form-group">
+                  <label for="tipoUsuario">Tipo de Usuário:</label>
+                  <select id="tipoUsuario" name="tipoUsuario" required>
+                    <option value="">Selecione...</option>
+                    <option value="franqueado">Franqueado</option>
+                    <option value="gerente">Gerente</option>
+                    <option value="colaborador">Colaborador</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="franquiaUsuario">Franquia:</label>
+                  <select id="franquiaUsuario" name="franquiaUsuario" required>
+                    <option value="">Selecione...</option>
+                    <option value="centro">Bio Shopping DF Plaza</option>
+                    <option value="norte">Bio Sams Club Águas Claras</option>
+                    <option value="sul">Bio Araucárias</option>
+                    <option value="leste">Bio Castanheiras</option>
+                    <option value="oeste">Bio Águas Claras Shopping</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="nomeUsuario">Nome Completo:</label>
+                  <input
+                    type="text"
+                    id="nomeUsuario"
+                    name="nomeUsuario"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="cpfUsuario">CPF:</label>
+                  <input
+                    type="text"
+                    id="cpfUsuario"
+                    name="cpfUsuario"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="emailUsuario">Email:</label>
+                  <input
+                    type="email"
+                    id="emailUsuario"
+                    name="emailUsuario"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="loginUsuario">Login:</label>
+                  <input
+                    type="text"
+                    id="loginUsuario"
+                    name="loginUsuario"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="senhaUsuario">Senha:</label>
+                  <input
+                    type="password"
+                    id="senhaUsuario"
+                    name="senhaUsuario"
+                    required
+                  />
+                </div>
+
+                <button type="submit" class="btn">Criar Cadastro</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba MONITORAMENTO DE CLIMA ORGANIZACIONAL -->
+        <div id="monitoramento" class="tab-content tab-pane">
+          <h2>Monitoramento de Clima Organizacional</h2>
+
+          <div class="card">
+            <h3>Visão Geral da Rede</h3>
+            <div class="dashboard">
+              <div class="chart-container">
+                <h4 class="chart-title">Índice de Satisfação por Franquia</h4>
+                <canvas id="satisfacaoRedeChart"></canvas>
+              </div>
+
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                  gap: 20px;
+                  margin-top: 30px;
+                "
+              >
+                <div class="chart-container">
+                  <h4 class="chart-title">Engajamento Médio</h4>
+                  <canvas id="engajamentoRedeChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                  <h4 class="chart-title">Avaliação de Liderança</h4>
+                  <canvas id="liderancaRedeChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Resultados Detalhados por Franquia</h3>
+
+            <div class="form-group">
+              <label for="franquiaResultados">Selecione a Franquia:</label>
+              <select id="franquiaResultados" name="franquiaResultados">
+                <option value="centro">Bio Shopping DF Plaza</option>
+                <option value="norte">Bio Sams Club Águas Claras</option>
+                <option value="sul">Bio Araucárias</option>
+                <option value="leste">Bio Castanheiras</option>
+                <option value="oeste">Bio Águas Claras Shopping</option>
+              </select>
+            </div>
+
+            <div class="dashboard">
+              <div class="chart-container">
+                <h4 class="chart-title">Resultados da Pesquisa de Clima</h4>
+                <canvas id="climaFranquiaChart"></canvas>
+              </div>
+
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                  gap: 20px;
+                  margin-top: 30px;
+                "
+              >
+                <div class="chart-container">
+                  <h4 class="chart-title">Distribuição de Respostas</h4>
+                  <canvas id="distribuicaoRespostasChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                  <h4 class="chart-title">Evolução Temporal</h4>
+                  <canvas id="evolucaoTemporalChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Comentários e Feedback</h3>
+
+            <div class="form-group">
+              <label for="franquiaComentarios">Selecione a Franquia:</label>
+              <select id="franquiaComentarios" name="franquiaComentarios">
+                <option value="centro">Bio Shopping DF Plaza</option>
+                <option value="norte">Bio Sams Club Águas Claras</option>
+                <option value="sul">Bio Araucárias</option>
+                <option value="leste">Bio Castanheiras</option>
+                <option value="oeste">Bio Águas Claras Shopping</option>
+              </select>
+            </div>
+
+            <div style="margin-top: 20px">
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 15px;
+                  border-radius: 8px;
+                  margin-bottom: 15px;
+                "
+              >
+                <p><strong>Colaborador Anônimo</strong> - 10/05/2025</p>
+                <p>
+                  "Gostaria de sugerir mais treinamentos para a equipe de
+                  atendimento. Sinto que poderíamos melhorar ainda mais o
+                  serviço ao cliente."
+                </p>
+              </div>
+
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 15px;
+                  border-radius: 8px;
+                  margin-bottom: 15px;
+                "
+              >
+                <p><strong>Colaborador Anônimo</strong> - 08/05/2025</p>
+                <p>
+                  "A comunicação entre os departamentos melhorou muito nos
+                  últimos meses. Parabéns à gestão!"
+                </p>
+              </div>
+
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 15px;
+                  border-radius: 8px;
+                  margin-bottom: 15px;
+                "
+              >
+                <p><strong>Colaborador Anônimo</strong> - 05/05/2025</p>
+                <p>
+                  "Sinto que o reconhecimento por bom desempenho poderia ser
+                  mais frequente. Às vezes trabalhamos muito e não recebemos
+                  feedback."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Exportar Relatórios</h3>
+
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-top: 20px;
+              "
+            >
+              <button class="btn">Exportar Relatório Completo</button>
+              <button class="btn">Exportar Gráficos</button>
+              <button class="btn">Exportar Comentários</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba OUVIDORIA DO COLABORADOR -->
+        <div id="ouvidoria" class="tab-content tab-pane">
+          <h2>Ouvidoria do Colaborador</h2>
+
+          <div class="card">
+            <h3>Filtrar Mensagens</h3>
+            <form
+              id="filtroOuvidoriaForm"
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                align-items: flex-end;
+              "
+            >
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroFranquiaOuvidoria">Franquia:</label>
+                <select
+                  id="filtroFranquiaOuvidoria"
+                  name="filtroFranquiaOuvidoria"
+                >
+                  <option value="">Todas as Franquias</option>
+                  <option value="centro">Bio Shopping DF Plaza</option>
+                  <option value="norte">Bio Sams Club Águas Claras</option>
+                  <option value="sul">Bio Araucárias</option>
+                  <option value="leste">Bio Castanheiras</option>
+                  <option value="oeste">Bio Águas Claras Shopping</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroStatusOuvidoria">Status:</label>
+                <select id="filtroStatusOuvidoria" name="filtroStatusOuvidoria">
+                  <option value="">Todos os Status</option>
+                  <option value="novo">Novo</option>
+                  <option value="emAnalise">Em Análise</option>
+                  <option value="respondido">Respondido</option>
+                  <option value="encerrado">Encerrado</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroPeriodoOuvidoria">Período:</label>
+                <select
+                  id="filtroPeriodoOuvidoria"
+                  name="filtroPeriodoOuvidoria"
+                >
+                  <option value="">Todos os Períodos</option>
+                  <option value="7dias">Últimos 7 dias</option>
+                  <option value="30dias">Últimos 30 dias</option>
+                  <option value="90dias">Últimos 90 dias</option>
+                </select>
+              </div>
+              <button type="submit" class="btn" style="height: 42px">
+                Filtrar
+              </button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Mensagens da Ouvidoria</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Data</th>
+                  <th>Franquia</th>
+                  <th>Assunto</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>OUV001</td>
+                  <td>15/05/2025</td>
+                  <td>Bio Shopping DF Plaza</td>
+                  <td>Sugestão de Melhoria</td>
+                  <td><span style="color: var(--warning-color)">Novo</span></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="padding: 5px 10px; font-size: 0.9rem"
+                      onclick="toggleView('mensagem1')"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>OUV002</td>
+                  <td>12/05/2025</td>
+                  <td>Bio Sams Club Águas Claras</td>
+                  <td>Dúvida sobre Benefícios</td>
+                  <td>
+                    <span style="color: var(--info-color)">Em Análise</span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="padding: 5px 10px; font-size: 0.9rem"
+                      onclick="toggleView('mensagem2')"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>OUV003</td>
+                  <td>10/05/2025</td>
+                  <td>Bio Araucárias</td>
+                  <td>Problema com Escala</td>
+                  <td>
+                    <span style="color: var(--success-color)">Respondido</span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="padding: 5px 10px; font-size: 0.9rem"
+                      onclick="toggleView('mensagem3')"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Detalhes das Mensagens -->
+            <div
+              id="mensagem1"
+              class="toggle-view"
+              style="
+                display: none;
+                margin-top: 30px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+              "
+            >
+              <h4>Detalhes da Mensagem - OUV001</h4>
+              <div style="margin-top: 15px">
+                <p><strong>Data:</strong> 15/05/2025</p>
+                <p><strong>Franquia:</strong> Bio Shopping DF Plaza</p>
+                <p><strong>Colaborador:</strong> João da Silva</p>
+                <p><strong>Assunto:</strong> Sugestão de Melhoria</p>
+                <p><strong>Mensagem:</strong></p>
+                <div
+                  style="
+                    background-color: #fff;
+                    padding: 15px;
+                    border-radius: 4px;
+                    margin: 10px 0;
+                  "
+                >
+                  Gostaria de sugerir a implementação de um programa de
+                  reconhecimento mensal para os colaboradores que se destacam.
+                  Acredito que isso aumentaria a motivação da equipe e
+                  melhoraria o clima organizacional.
+                </div>
+
+                <div style="margin-top: 20px">
+                  <h5>Responder:</h5>
+                  <form id="respostaMensagem1Form">
+                    <div class="form-group">
+                      <textarea
+                        id="respostaMensagem1"
+                        name="respostaMensagem1"
+                        rows="5"
+                        required
+                      ></textarea>
+                    </div>
+                    <div style="display: flex; gap: 10px">
+                      <button type="submit" class="btn">Enviar Resposta</button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="document.getElementById('mensagem1').style.display = 'none'"
+                      >
+                        Fechar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="mensagem2"
+              class="toggle-view"
+              style="
+                display: none;
+                margin-top: 30px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+              "
+            >
+              <h4>Detalhes da Mensagem - OUV002</h4>
+              <p>Detalhes da mensagem 2 seriam exibidos aqui.</p>
+              <button
+                class="btn"
+                onclick="document.getElementById('mensagem2').style.display = 'none'"
+              >
+                Fechar
+              </button>
+            </div>
+
+            <div
+              id="mensagem3"
+              class="toggle-view"
+              style="
+                display: none;
+                margin-top: 30px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+              "
+            >
+              <h4>Detalhes da Mensagem - OUV003</h4>
+              <p>Detalhes da mensagem 3 seriam exibidos aqui.</p>
+              <button
+                class="btn"
+                onclick="document.getElementById('mensagem3').style.display = 'none'"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba GESTÃO DE REQUERIMENTOS -->
+        <div id="gestao-requerimentos" class="tab-content tab-pane">
+          <h2>Gestão de Requerimentos</h2>
+
+          <div class="card">
+            <h3>Filtrar Requerimentos</h3>
+            <form
+              id="filtroRequerimentosForm"
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                align-items: flex-end;
+              "
+            >
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroFranquiaReq">Franquia:</label>
+                <select id="filtroFranquiaReq" name="filtroFranquiaReq">
+                  <option value="">Todas as Franquias</option>
+                  <option value="centro">Bio Shopping DF Plaza</option>
+                  <option value="norte">Bio Sams Club Águas Claras</option>
+                  <option value="sul">Bio Araucárias</option>
+                  <option value="leste">Bio Castanheiras</option>
+                  <option value="oeste">Bio Águas Claras Shopping</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroTipoReq">Tipo:</label>
+                <select id="filtroTipoReq" name="filtroTipoReq">
+                  <option value="">Todos os Tipos</option>
+                  <option value="novoCadastro">Novo Cadastro</option>
+                  <option value="cancelamento">Cancelamento</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 200px">
+                <label for="filtroStatusReq">Status:</label>
+                <select id="filtroStatusReq" name="filtroStatusReq">
+                  <option value="">Todos os Status</option>
+                  <option value="pendente">Pendente</option>
+                  <option value="aprovado">Aprovado</option>
+                  <option value="concluido">Concluído</option>
+                  <option value="rejeitado">Rejeitado</option>
+                </select>
+              </div>
+              <button type="submit" class="btn" style="height: 42px">
+                Filtrar
+              </button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Requerimentos Pendentes</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Data</th>
+                  <th>Franquia</th>
+                  <th>Solicitante</th>
+                  <th>Tipo</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>REQ001</td>
+                  <td>15/05/2025</td>
+                  <td>Bio Shopping DF Plaza</td>
+                  <td>Carlos Mendes</td>
+                  <td>Novo Cadastro</td>
+                  <td>
+                    <span style="color: var(--warning-color)">Pendente</span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="padding: 5px 10px; font-size: 0.9rem"
+                      onclick="toggleView('requerimento1')"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>REQ002</td>
+                  <td>14/05/2025</td>
+                  <td>Bio Sams Club Águas Claras</td>
+                  <td>Fernanda Lima</td>
+                  <td>Cancelamento</td>
+                  <td>
+                    <span style="color: var(--warning-color)">Pendente</span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="padding: 5px 10px; font-size: 0.9rem"
+                      onclick="toggleView('requerimento2')"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Detalhes dos Requerimentos -->
+            <div
+              id="requerimento1"
+              class="toggle-view"
+              style="
+                display: none;
+                margin-top: 30px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+              "
+            >
+              <h4>Detalhes do Requerimento - REQ001</h4>
+              <div style="margin-top: 15px">
+                <p><strong>Data:</strong> 15/05/2025</p>
+                <p><strong>Franquia:</strong> Bio Shopping DF Plaza</p>
+                <p><strong>Solicitante:</strong> Carlos Mendes</p>
+                <p><strong>Tipo:</strong> Novo Cadastro</p>
+                <p><strong>Detalhes:</strong></p>
+                <div
+                  style="
+                    background-color: #fff;
+                    padding: 15px;
+                    border-radius: 4px;
+                    margin: 10px 0;
+                  "
+                >
+                  <p><strong>Nome do Funcionário:</strong> Lucas Ferreira</p>
+                  <p><strong>CPF:</strong> 456.789.012-34</p>
+                  <p><strong>Email:</strong> lucas.ferreira@exemplo.com</p>
+                  <p><strong>Cargo:</strong> Atendente</p>
+                  <p><strong>Data de Admissão:</strong> 15/05/2025</p>
+                </div>
+
+                <div style="margin-top: 20px">
+                  <h5>Responder Requerimento:</h5>
+                  <form id="respostaRequerimento1Form">
+                    <div class="form-group">
+                      <label for="loginGerado">Login Gerado:</label>
+                      <input
+                        type="text"
+                        id="loginGerado"
+                        name="loginGerado"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="senhaGerada">Senha Gerada:</label>
+                      <input
+                        type="text"
+                        id="senhaGerada"
+                        name="senhaGerada"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="observacoesReq">Observações:</label>
+                      <textarea
+                        id="observacoesReq"
+                        name="observacoesReq"
+                        rows="3"
+                      ></textarea>
+                    </div>
+                    <div style="display: flex; gap: 10px">
+                      <button type="submit" class="btn">
+                        Aprovar e Enviar
+                      </button>
+                      <button type="button" class="btn btn-danger">
+                        Rejeitar
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="document.getElementById('requerimento1').style.display = 'none'"
+                      >
+                        Fechar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="requerimento2"
+              class="toggle-view"
+              style="
+                display: none;
+                margin-top: 30px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+              "
+            >
+              <h4>Detalhes do Requerimento - REQ002</h4>
+              <p>Detalhes do requerimento 2 seriam exibidos aqui.</p>
+              <button
+                class="btn"
+                onclick="document.getElementById('requerimento2').style.display = 'none'"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Histórico de Requerimentos</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Data</th>
+                  <th>Franquia</th>
+                  <th>Solicitante</th>
+                  <th>Tipo</th>
+                  <th>Status</th>
+                  <th>Data Resposta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>REQ000</td>
+                  <td>10/05/2025</td>
+                  <td>Bio Shopping DF Plaza</td>
+                  <td>Carlos Mendes</td>
+                  <td>Novo Cadastro</td>
+                  <td>
+                    <span style="color: var(--success-color)">Aprovado</span>
+                  </td>
+                  <td>11/05/2025</td>
+                </tr>
+                <tr>
+                  <td>REQ-1</td>
+                  <td>05/05/2025</td>
+                  <td>Bio Araucárias</td>
+                  <td>Roberto Almeida</td>
+                  <td>Cancelamento</td>
+                  <td>
+                    <span style="color: var(--success-color)">Concluído</span>
+                  </td>
+                  <td>06/05/2025</td>
+                </tr>
+                <tr>
+                  <td>REQ-2</td>
+                  <td>01/05/2025</td>
+                  <td>Bio Castanheiras</td>
+                  <td>Juliana Costa</td>
+                  <td>Novo Cadastro</td>
+                  <td>
+                    <span style="color: var(--danger-color)">Rejeitado</span>
+                  </td>
+                  <td>02/05/2025</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Aba FRANQUIAS ENGAJADAS -->
+        <div id="franquias-engajadas" class="tab-content tab-pane">
+          <h2>Franquias Engajadas</h2>
+
+          <div class="card">
+            <h3>Campanha de Endomarketing Atual</h3>
+
+            <div style="margin-top: 20px">
+              <h4>Status de Participação</h4>
+              <div class="chart-container">
+                <canvas id="participacaoChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Fotos das Campanhas</h3>
+
+            <div class="form-group">
+              <label for="filtroCampanha">Filtrar por Campanha:</label>
+              <select id="filtroCampanha" name="filtroCampanha">
+                <option value="maio2025">
+                  Biomundo Sustentável - Maio/2025
+                </option>
+                <option value="abril2025">
+                  Saúde em Primeiro Lugar - Abril/2025
+                </option>
+                <option value="marco2025">Mês da Mulher - Março/2025</option>
+              </select>
+            </div>
+
+            <div class="gallery" style="margin-top: 20px">
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/campanha-centro.jpg"
+                  alt="Campanha Biomundo Centro"
+                />
+                <div class="gallery-caption">Bio Shopping DF Plaza</div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/campanha-norte.jpg"
+                  alt="Campanha Biomundo Norte"
+                />
+                <div class="gallery-caption">Bio Sams Club Águas Claras</div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/campanha-sul.jpg"
+                  alt="Campanha Biomundo Sul"
+                />
+                <div class="gallery-caption">Bio Araucárias</div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/campanha-leste.jpg"
+                  alt="Campanha Biomundo Leste"
+                />
+                <div class="gallery-caption">Bio Castanheiras</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Histórico de Participação</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Franquia</th>
+                  <th>Maio/2025</th>
+                  <th>Abril/2025</th>
+                  <th>Março/2025</th>
+                  <th>Fevereiro/2025</th>
+                  <th>Janeiro/2025</th>
+                  <th>Taxa de Participação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Bio Shopping DF Plaza</td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>Bio Sams Club Águas Claras</td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--danger-color)">✗</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td>80%</td>
+                </tr>
+                <tr>
+                  <td>Bio Araucárias</td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--danger-color)">✗</span></td>
+                  <td><span style="color: var(--danger-color)">✗</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td>60%</td>
+                </tr>
+                <tr>
+                  <td>Bio Castanheiras</td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--danger-color)">✗</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td>80%</td>
+                </tr>
+                <tr>
+                  <td>Bio Águas Claras Shopping</td>
+                  <td><span style="color: var(--danger-color)">✗</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--success-color)">✓</span></td>
+                  <td><span style="color: var(--danger-color)">✗</span></td>
+                  <td>60%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+        <div class="copyright">
+          &copy; 2025 Biomundo. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Inicializa os gráficos
+        initializeRHCharts();
+      });
+
+      // Função para inicializar os gráficos da área de RH
+      function initializeRHCharts() {
+        // Gráfico de Satisfação por Franquia
+        const satisfacaoRedeCtx = document.getElementById(
+          "satisfacaoRedeChart"
+        );
+        if (satisfacaoRedeCtx) {
+          new Chart(satisfacaoRedeCtx, {
+            type: "bar",
+            data: {
+              labels: [
+                "Bio Shopping DF Plaza",
+                "Bio Sams Club Águas Claras",
+                "Bio Araucárias",
+                "Bio Castanheiras",
+                "Bio Águas Claras Shopping",
+              ],
+              datasets: [
+                {
+                  label: "Índice de Satisfação (%)",
+                  data: [85, 78, 72, 80, 75],
+                  backgroundColor: [
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(0, 102, 51, 0.7)",
+                  ],
+                  borderColor: [
+                    "rgba(0, 102, 51, 1)",
+                    "rgba(0, 102, 51, 1)",
+                    "rgba(0, 102, 51, 1)",
+                    "rgba(0, 102, 51, 1)",
+                    "rgba(0, 102, 51, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Engajamento Médio
+        const engajamentoRedeCtx = document.getElementById(
+          "engajamentoRedeChart"
+        );
+        if (engajamentoRedeCtx) {
+          new Chart(engajamentoRedeCtx, {
+            type: "doughnut",
+            data: {
+              labels: ["Alto", "Médio", "Baixo"],
+              datasets: [
+                {
+                  data: [60, 30, 10],
+                  backgroundColor: [
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(248, 161, 0, 0.7)",
+                    "rgba(220, 53, 69, 0.7)",
+                  ],
+                  borderColor: [
+                    "rgba(0, 102, 51, 1)",
+                    "rgba(248, 161, 0, 1)",
+                    "rgba(220, 53, 69, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Avaliação de Liderança
+        const liderancaRedeCtx = document.getElementById("liderancaRedeChart");
+        if (liderancaRedeCtx) {
+          new Chart(liderancaRedeCtx, {
+            type: "radar",
+            data: {
+              labels: [
+                "Comunicação",
+                "Suporte",
+                "Reconhecimento",
+                "Desenvolvimento",
+                "Feedback",
+              ],
+              datasets: [
+                {
+                  label: "Média da Rede",
+                  data: [75, 78, 70, 72, 76],
+                  backgroundColor: "rgba(0, 102, 51, 0.2)",
+                  borderColor: "rgba(0, 102, 51, 1)",
+                  borderWidth: 2,
+                  pointBackgroundColor: "rgba(0, 102, 51, 1)",
+                },
+              ],
+            },
+            options: {
+              scales: {
+                r: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Clima por Franquia
+        const climaFranquiaCtx = document.getElementById("climaFranquiaChart");
+        if (climaFranquiaCtx) {
+          new Chart(climaFranquiaCtx, {
+            type: "bar",
+            data: {
+              labels: [
+                "Satisfação",
+                "Engajamento",
+                "Comunicação",
+                "Liderança",
+                "Ambiente",
+              ],
+              datasets: [
+                {
+                  label: "Bio Shopping DF Plaza",
+                  data: [85, 82, 78, 80, 88],
+                  backgroundColor: "rgba(0, 102, 51, 0.7)",
+                  borderColor: "rgba(0, 102, 51, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Distribuição de Respostas
+        const distribuicaoRespostasCtx = document.getElementById(
+          "distribuicaoRespostasChart"
+        );
+        if (distribuicaoRespostasCtx) {
+          new Chart(distribuicaoRespostasCtx, {
+            type: "pie",
+            data: {
+              labels: [
+                "Muito Satisfeito",
+                "Satisfeito",
+                "Neutro",
+                "Insatisfeito",
+                "Muito Insatisfeito",
+              ],
+              datasets: [
+                {
+                  data: [40, 35, 15, 7, 3],
+                  backgroundColor: [
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(0, 153, 76, 0.7)",
+                    "rgba(248, 161, 0, 0.7)",
+                    "rgba(255, 99, 71, 0.7)",
+                    "rgba(220, 53, 69, 0.7)",
+                  ],
+                  borderColor: [
+                    "rgba(0, 102, 51, 1)",
+                    "rgba(0, 153, 76, 1)",
+                    "rgba(248, 161, 0, 1)",
+                    "rgba(255, 99, 71, 1)",
+                    "rgba(220, 53, 69, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Evolução Temporal
+        const evolucaoTemporalCtx = document.getElementById(
+          "evolucaoTemporalChart"
+        );
+        if (evolucaoTemporalCtx) {
+          new Chart(evolucaoTemporalCtx, {
+            type: "line",
+            data: {
+              labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+              datasets: [
+                {
+                  label: "Índice de Satisfação",
+                  data: [75, 78, 80, 82, 85],
+                  backgroundColor: "rgba(0, 102, 51, 0.2)",
+                  borderColor: "rgba(0, 102, 51, 1)",
+                  borderWidth: 2,
+                  tension: 0.3,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Participação nas Campanhas
+        const participacaoCtx = document.getElementById("participacaoChart");
+        if (participacaoCtx) {
+          new Chart(participacaoCtx, {
+            type: "bar",
+            data: {
+              labels: [
+                "Bio Shopping DF Plaza",
+                "Bio Sams Club Águas Claras",
+                "Bio Araucárias",
+                "Bio Castanheiras",
+                "Bio Águas Claras Shopping",
+              ],
+              datasets: [
+                {
+                  label: "Participou",
+                  data: [1, 1, 1, 1, 0],
+                  backgroundColor: "rgba(0, 102, 51, 0.7)",
+                  borderColor: "rgba(0, 102, 51, 1)",
+                  borderWidth: 1,
+                },
+                {
+                  label: "Não Participou",
+                  data: [0, 0, 0, 0, 1],
+                  backgroundColor: "rgba(220, 53, 69, 0.7)",
+                  borderColor: "rgba(220, 53, 69, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 1,
+                  ticks: {
+                    callback: function (value) {
+                      return value === 1 ? "Sim" : "Não";
+                    },
+                  },
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+      }
+    </script>
+    <script>
+      // Script para garantir que o botão e o container do chat sejam criados
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          // Verifica se o botão já existe
+          if (!document.getElementById("chat-button")) {
+            console.log("Forçando criação do botão de chat");
+            // Cria o botão de chat
+            const chatButton = document.createElement("div");
+            chatButton.className = "chat-button";
+            chatButton.innerHTML = '<i class="fas fa-comment"></i>';
+            chatButton.setAttribute("id", "chat-button");
+            chatButton.setAttribute(
+              "title",
+              "Converse com a Gaia - Assistente Virtual"
+            );
+            document.body.appendChild(chatButton);
+
+            // Verificamos também se o container existe
+            let chatContainer = document.querySelector(".chat-container");
+            if (!chatContainer) {
+              console.log("Forçando criação do container do chat");
+              // Cria o container do chat
+              chatContainer = document.createElement("div");
+              chatContainer.className = "chat-container";
+              chatContainer.innerHTML = `
+                <div class="chat-header">
+                  <div class="chat-title">
+                    <img src="../assets/images/gaia-ai.jpg" alt="Gaia IA" class="chat-avatar" />
+                    <span>Gaia - Assistente Virtual</span>
+                  </div>
+                  <button class="chat-close" id="chat-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                  <div class="message bot-message">
+                    <p>Olá, profissional de RH! Eu sou a Gaia, assistente virtual do BioMundo. Como posso auxiliá-lo(a) hoje?</p>
+                  </div>
+                </div>
+                <div class="chat-input-container">
+                  <input type="text" id="chat-input" placeholder="Digite sua mensagem..." />
+                  <button id="chat-send">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              `;
+              document.body.appendChild(chatContainer);
+              chatContainer.style.display = "none";
+            }
+
+            // Adiciona o evento de clique para abrir o chat
+            chatButton.addEventListener("click", function () {
+              console.log("Botão clicado, abrindo chat");
+              chatContainer.style.display = "flex";
+
+              // Adiciona o evento de fechar se necessário
+              const closeButton = document.getElementById("chat-close");
+              if (closeButton) {
+                closeButton.addEventListener("click", function () {
+                  chatContainer.style.display = "none";
+                });
+              }
+
+              // Tenta focar no input
+              const chatInput = document.getElementById("chat-input");
+              if (chatInput) {
+                chatInput.focus();
+              }
+            });
+          } else {
+            // Se o botão já existe, garantimos que o evento de clique esteja funcionando
+            const chatButton = document.getElementById("chat-button");
+            const chatContainer = document.querySelector(".chat-container");
+
+            // Remove eventos anteriores para evitar duplicação
+            chatButton.replaceWith(chatButton.cloneNode(true));
+
+            // Adiciona o evento novamente
+            document
+              .getElementById("chat-button")
+              .addEventListener("click", function () {
+                console.log("Botão clicado, abrindo chat");
+                if (chatContainer) {
+                  chatContainer.style.display = "flex";
+
+                  // Tenta focar no input
+                  const chatInput = document.getElementById("chat-input");
+                  if (chatInput) {
+                    chatInput.focus();
+                  }
+                } else {
+                  console.error("Container do chat não encontrado!");
+                }
+              });
+          }
+        }, 1000); // Aguarda 1 segundo para garantir que tudo esteja carregado
+      });
+
+      // Função auxiliar para mostrar/esconder elementos
+      function toggleView(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+          if (element.style.display === "none") {
+            element.style.display = "block";
+          } else {
+            element.style.display = "none";
+          }
+        }
+      }
+
+      // Inicializa os gráficos e eventos das abas
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabLinks = document.querySelectorAll(".nav-tabs a");
+        const tabContents = document.querySelectorAll(".tab-pane");
+
+        tabLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Remove a classe active de todas as abas
+            tabLinks.forEach((item) => item.classList.remove("active"));
+            tabContents.forEach((item) => item.classList.remove("active"));
+
+            // Adiciona a classe active na aba clicada
+            this.classList.add("active");
+
+            // Mostra o conteúdo correspondente
+            const tabId = this.getAttribute("href").substring(1);
+            document.getElementById(tabId).classList.add("active");
+
+            // Salva a aba ativa no localStorage
+            localStorage.setItem("activeTabRh", tabId);
+          });
+        });
+
+        // Verifica se há uma aba salva no localStorage
+        const activeTab = localStorage.getItem("activeTabRh");
+        if (activeTab) {
+          const activeLink = document.querySelector(
+            `.nav-tabs a[href="#${activeTab}"]`
+          );
+          if (activeLink) {
+            activeLink.click();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

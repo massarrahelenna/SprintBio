@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Biomais - Portal do Gestor</title>
+    <link rel="stylesheet" href="../assets/css/style-modern.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aller:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../assets/css/chat-style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="header-container">
+          <div class="logo">
+            <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+          </div>
+          <nav class="main-nav">
+            <div class="nav-container">
+              <ul class="nav-tabs">
+                <li>
+                  <a href="#mural" class="active" data-tab="mural">Mural</a>
+                </li>
+                <li>
+                  <a href="#dados-pessoais" data-tab="dados-pessoais"
+                    >Dados Pessoais</a
+                  >
+                </li>
+                <li>
+                  <a href="#requerimentos" data-tab="requerimentos"
+                    >Requerimentos e Cadastros</a
+                  >
+                </li>
+                <li><a href="#gaia" data-tab="gaia">Gaia a IA</a></li>
+                <li>
+                  <a href="#monitoramento" data-tab="monitoramento"
+                    >Monitoramento de Clima</a
+                  >
+                </li>
+                <li>
+                  <a href="#franquia-engajada" data-tab="franquia-engajada"
+                    >Franquia Engajada</a
+                  >
+                </li>
+                <li>
+                  <a href="#hall-excelencia" data-tab="hall-excelencia"
+                    >Hall da Excelência</a
+                  >
+                </li>
+                <li><a href="#manuais" data-tab="manuais">Manuais</a></li>
+              </ul>
+            </div>
+          </nav>
+          <a href="../index.html" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Sair
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <!-- Aba MURAL -->
+        <div id="mural" class="tab-content tab-pane active">
+          <h2>Mural de Reconhecimento</h2>
+
+          <div class="card">
+            <h3>Equipes Ganhadoras - Prêmios de Gestão de Pessoas</h3>
+            <div class="gallery">
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/equipe-1.jpg"
+                  alt="Equipe 1º Lugar"
+                />
+                <div class="gallery-caption">
+                  1º Lugar - Bio Shopping DF Plaza
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/equipe-2.jpg"
+                  alt="Equipe 2º Lugar"
+                />
+                <div class="gallery-caption">
+                  2º Lugar - Bio Sams Club Águas Claras
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="../assets/images/equipe-3.jpg"
+                  alt="Equipe 3º Lugar"
+                />
+                <div class="gallery-caption">3º Lugar - Bio Araucárias</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba DADOS PESSOAIS -->
+        <div id="dados-pessoais" class="tab-content tab-pane">
+          <h2>Dados Pessoais</h2>
+
+          <div class="card">
+            <h3>Informações do Gestor</h3>
+            <div class="profile-info">
+              <div class="profile-field">
+                <strong>Nome Completo:</strong>
+                <span data-field="nome">Carlos Mendes</span>
+              </div>
+              <div class="profile-field">
+                <strong>CPF:</strong>
+                <span data-field="cpf">987.654.321-00</span>
+              </div>
+              <div class="profile-field">
+                <strong>Email:</strong>
+                <span data-field="email">carlos.mendes@exemplo.com</span>
+              </div>
+              <div class="profile-field">
+                <strong>Franquia:</strong>
+                <span data-field="franquia">Bio Shopping DF Plaza</span>
+              </div>
+              <div class="profile-field">
+                <strong>Cargo:</strong>
+                <span data-field="cargo">Franqueado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba REQUERIMENTOS E CADASTROS -->
+        <div id="requerimentos" class="tab-content tab-pane">
+          <h2>Requerimentos e Cadastros</h2>
+
+          <div class="card">
+            <h3>Requerimentos para o RH</h3>
+            <p>
+              Utilize esta área para solicitar novos cadastros ou cancelamentos
+              de cadastros existentes.
+            </p>
+
+            <div style="margin: 20px 0">
+              <button class="btn" onclick="toggleView('novoCadastroForm')">
+                Solicitar Novo Cadastro
+              </button>
+              <button
+                class="btn btn-danger"
+                style="margin-left: 10px"
+                onclick="toggleView('cancelamentoCadastroForm')"
+              >
+                Solicitar Cancelamento de Cadastro
+              </button>
+            </div>
+
+            <!-- Formulário de Novo Cadastro -->
+            <div
+              id="novoCadastroForm"
+              class="toggle-view"
+              style="display: none"
+            >
+              <h4 style="margin-top: 20px">Solicitar Novo Cadastro</h4>
+              <form id="formNovoCadastro">
+                <div class="form-group">
+                  <label for="nomeFuncionario"
+                    >Nome Completo do Funcionário:</label
+                  >
+                  <input
+                    type="text"
+                    id="nomeFuncionario"
+                    name="nomeFuncionario"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cpfFuncionario">CPF do Funcionário:</label>
+                  <input
+                    type="text"
+                    id="cpfFuncionario"
+                    name="cpfFuncionario"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="emailFuncionario">Email do Funcionário:</label>
+                  <input
+                    type="email"
+                    id="emailFuncionario"
+                    name="emailFuncionario"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cargoFuncionario">Cargo do Funcionário:</label>
+                  <input
+                    type="text"
+                    id="cargoFuncionario"
+                    name="cargoFuncionario"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dataAdmissao">Data de Admissão:</label>
+                  <input
+                    type="date"
+                    id="dataAdmissao"
+                    name="dataAdmissao"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn">Enviar Solicitação</button>
+              </form>
+            </div>
+
+            <!-- Formulário de Cancelamento de Cadastro -->
+            <div
+              id="cancelamentoCadastroForm"
+              class="toggle-view"
+              style="display: none"
+            >
+              <h4 style="margin-top: 20px">
+                Solicitar Cancelamento de Cadastro
+              </h4>
+              <form id="formCancelamentoCadastro">
+                <div class="form-group">
+                  <label for="funcionarioCancelamento"
+                    >Selecione o Funcionário:</label
+                  >
+                  <select
+                    id="funcionarioCancelamento"
+                    name="funcionarioCancelamento"
+                    required
+                  >
+                    <option value="">Selecione...</option>
+                    <option value="1">João da Silva - Atendente</option>
+                    <option value="2">Maria Oliveira - Caixa</option>
+                    <option value="3">Pedro Santos - Estoquista</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="dataDemissao">Data de Desligamento:</label>
+                  <input
+                    type="date"
+                    id="dataDemissao"
+                    name="dataDemissao"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="motivoDemissao">Motivo do Desligamento:</label>
+                  <select id="motivoDemissao" name="motivoDemissao" required>
+                    <option value="">Selecione...</option>
+                    <option value="demissao">Demissão</option>
+                    <option value="pedido">Pedido de Demissão</option>
+                    <option value="acordo">Acordo Mútuo</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="observacoesDemissao">Observações:</label>
+                  <textarea
+                    id="observacoesDemissao"
+                    name="observacoesDemissao"
+                    rows="4"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger">
+                  Enviar Solicitação de Cancelamento
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Cadastro de Funcionários</h3>
+            <p>
+              Utilize esta área para cadastrar ou atualizar informações dos
+              funcionários da sua franquia.
+            </p>
+
+            <div style="margin: 20px 0">
+              <button
+                class="btn"
+                onclick="toggleView('cadastroFuncionarioForm')"
+              >
+                Cadastrar/Atualizar Funcionário
+              </button>
+            </div>
+
+            <!-- Formulário de Cadastro/Atualização de Funcionário -->
+            <div
+              id="cadastroFuncionarioForm"
+              class="toggle-view"
+              style="display: none"
+            >
+              <h4 style="margin-top: 20px">
+                Cadastro/Atualização de Funcionário
+              </h4>
+              <form id="formCadastroFuncionario">
+                <div class="form-group">
+                  <label for="loginFuncionario">Login do Funcionário:</label>
+                  <input
+                    type="text"
+                    id="loginFuncionario"
+                    name="loginFuncionario"
+                    required
+                  />
+                  <small>Informe o login fornecido pelo RH.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="nomeCompletoFunc">Nome Completo:</label>
+                  <input
+                    type="text"
+                    id="nomeCompletoFunc"
+                    name="nomeCompletoFunc"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="cpfFunc">CPF:</label>
+                  <input type="text" id="cpfFunc" name="cpfFunc" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="emailFunc">Email:</label>
+                  <input
+                    type="email"
+                    id="emailFunc"
+                    name="emailFunc"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="dataIngressoFunc"
+                    >Data de Ingresso na Biomundo:</label
+                  >
+                  <input
+                    type="date"
+                    id="dataIngressoFunc"
+                    name="dataIngressoFunc"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="dataIngressoFranquiaFunc"
+                    >Data de Ingresso na Franquia Atual:</label
+                  >
+                  <input
+                    type="date"
+                    id="dataIngressoFranquiaFunc"
+                    name="dataIngressoFranquiaFunc"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="funcaoFunc">Função na Franquia:</label>
+                  <select id="funcaoFunc" name="funcaoFunc" required>
+                    <option value="">Selecione...</option>
+                    <option value="atendente">Atendente</option>
+                    <option value="caixa">Caixa</option>
+                    <option value="estoquista">Estoquista</option>
+                    <option value="gerente">Gerente</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+
+                <div
+                  class="form-group"
+                  id="outraFuncaoGroup"
+                  style="display: none"
+                >
+                  <label for="outraFuncaoFunc">Especifique a Função:</label>
+                  <input
+                    type="text"
+                    id="outraFuncaoFunc"
+                    name="outraFuncaoFunc"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Tipo de Cadastro:</label>
+                  <div style="margin-top: 10px">
+                    <label style="display: inline-block; margin-right: 20px">
+                      <input
+                        type="radio"
+                        name="tipoCadastro"
+                        value="novo"
+                        checked
+                      />
+                      Novo Cadastro
+                    </label>
+                    <label style="display: inline-block">
+                      <input
+                        type="radio"
+                        name="tipoCadastro"
+                        value="promocao"
+                      />
+                      Atualização por Promoção
+                    </label>
+                  </div>
+                </div>
+
+                <div
+                  id="promocaoFields"
+                  style="
+                    display: none;
+                    margin-top: 15px;
+                    padding: 15px;
+                    background-color: #f9f9f9;
+                    border-radius: 4px;
+                  "
+                >
+                  <h5 style="margin-top: 0">Informações da Promoção</h5>
+                  <div class="form-group">
+                    <label for="dataPromocao">Data da Promoção:</label>
+                    <input type="date" id="dataPromocao" name="dataPromocao" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cargoAnterior">Cargo Anterior:</label>
+                    <input
+                      type="text"
+                      id="cargoAnterior"
+                      name="cargoAnterior"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="cargoNovo">Novo Cargo:</label>
+                    <input type="text" id="cargoNovo" name="cargoNovo" />
+                  </div>
+                </div>
+
+                <button type="submit" class="btn" style="margin-top: 20px">
+                  Salvar Cadastro
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Histórico de Requerimentos</h3>
+            <p>Acompanhe o status dos seus requerimentos enviados ao RH.</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tipo</th>
+                  <th>Data</th>
+                  <th>Funcionário</th>
+                  <th>Status</th>
+                  <th>Resposta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>001</td>
+                  <td>Novo Cadastro</td>
+                  <td>10/05/2025</td>
+                  <td>Ana Souza</td>
+                  <td>
+                    <span style="color: var(--success-color)">Aprovado</span>
+                  </td>
+                  <td>Login: ana.souza | Senha: BM2025</td>
+                </tr>
+                <tr>
+                  <td>002</td>
+                  <td>Cancelamento</td>
+                  <td>12/05/2025</td>
+                  <td>Pedro Santos</td>
+                  <td>
+                    <span style="color: var(--success-color)">Concluído</span>
+                  </td>
+                  <td>Cadastro cancelado em 13/05/2025</td>
+                </tr>
+                <tr>
+                  <td>003</td>
+                  <td>Novo Cadastro</td>
+                  <td>15/05/2025</td>
+                  <td>Lucas Ferreira</td>
+                  <td>
+                    <span style="color: var(--warning-color)">Pendente</span>
+                  </td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Aba GAIA A IA -->
+        <div id="gaia" class="tab-content tab-pane">
+          <h2>GAIA - A Inteligência Artificial da Biomundo</h2>
+
+          <div
+            class="card"
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              gap: 30px;
+            "
+          >
+            <div style="flex: 1; min-width: 300px">
+              <img
+                src="../assets/images/gaia-ai.jpg"
+                alt="Gaia IA"
+                style="width: 100%; border-radius: 8px"
+              />
+            </div>
+            <div style="flex: 2; min-width: 300px">
+              <p>
+                Gaia é a nossa nova parceira na Biomundo, pronta para ajudar
+                você no dia a dia! Com o nome inspirado na ideia de fertilidade
+                e equilíbrio, ela reflete nosso compromisso com práticas
+                sustentáveis e éticas. Você pode contar com a Gaia para tirar
+                dúvidas sobre gestão de pessoas, consultar o Manual do
+                Franqueado Bio+ e saber mais sobre o Programa Comunidade Bio+.
+              </p>
+
+              <p>
+                Ela é uma grande aliada para criar um ambiente de trabalho
+                positivo, sempre pronta para compartilhar boas práticas e apoiar
+                o seu crescimento profissional. Gaia está aqui para fortalecer
+                nosso espírito de comunidade, unindo franqueados, funcionários e
+                a sede da Biomundo, e ajudando a tornar a Biomundo um lugar
+                ainda melhor para todos nós.
+              </p>
+
+              <a href="#" class="btn" style="margin-top: 15px"
+                >Conversar com a Gaia</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba MONITORAMENTO DE CLIMA ORGANIZACIONAL -->
+        <div id="monitoramento" class="tab-content tab-pane">
+          <h2>Monitoramento de Clima Organizacional</h2>
+
+          <div class="card">
+            <h3>Resultados Parciais das Pesquisas de Pulso</h3>
+            <p>
+              Acompanhe os resultados parciais das pesquisas de pulso da sua
+              franquia. Estes dados são apresentados em porcentagem para ajudar
+              no monitoramento do clima organizacional.
+            </p>
+
+            <div class="dashboard">
+              <div class="chart-container">
+                <h4 class="chart-title">Índice de Satisfação Geral</h4>
+                <canvas id="satisfacaoChart"></canvas>
+              </div>
+
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                  gap: 20px;
+                  margin-top: 30px;
+                "
+              >
+                <div class="chart-container">
+                  <h4 class="chart-title">Engajamento da Equipe</h4>
+                  <canvas id="engajamentoChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                  <h4 class="chart-title">Comunicação Interna</h4>
+                  <canvas id="comunicacaoChart"></canvas>
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                  gap: 20px;
+                  margin-top: 30px;
+                "
+              >
+                <div class="chart-container">
+                  <h4 class="chart-title">Avaliação da Liderança</h4>
+                  <canvas id="liderancaChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                  <h4 class="chart-title">Ambiente de Trabalho</h4>
+                  <canvas id="ambienteChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Dicas para Melhorar o Clima Organizacional</h3>
+            <p>
+              Com base nos resultados das pesquisas, aqui estão algumas dicas
+              para melhorar o clima organizacional na sua franquia:
+            </p>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin-top: 20px;
+              "
+            >
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 20px;
+                  border-radius: 8px;
+                  border-left: 4px solid var(--primary-color);
+                "
+              >
+                <h4 style="color: var(--primary-color)">Comunicação</h4>
+                <p>
+                  Realize reuniões semanais com a equipe para alinhar
+                  expectativas e compartilhar informações importantes. Crie
+                  canais de comunicação eficientes e transparentes.
+                </p>
+              </div>
+
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 20px;
+                  border-radius: 8px;
+                  border-left: 4px solid var(--secondary-color);
+                "
+              >
+                <h4 style="color: var(--secondary-color)">Reconhecimento</h4>
+                <p>
+                  Reconheça e celebre as conquistas individuais e coletivas.
+                  Implemente um programa de reconhecimento para destacar o bom
+                  desempenho dos colaboradores.
+                </p>
+              </div>
+
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 20px;
+                  border-radius: 8px;
+                  border-left: 4px solid var(--primary-color);
+                "
+              >
+                <h4 style="color: var(--primary-color)">Desenvolvimento</h4>
+                <p>
+                  Ofereça oportunidades de crescimento e desenvolvimento
+                  profissional. Invista em treinamentos e capacitações para a
+                  equipe.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba FRANQUIA ENGAJADA -->
+        <div id="franquia-engajada" class="tab-content tab-pane">
+          <h2>Franquia Engajada</h2>
+
+          <div class="card">
+            <h3>Campanha de Endomarketing do Mês</h3>
+            <p>
+              Participe da nossa campanha de endomarketing mensal e compartilhe
+              as ações realizadas na sua franquia.
+            </p>
+
+            <form id="campanhaForm">
+              <div class="form-group">
+                <label
+                  >Você aderiu à nossa campanha de endomarketing do mês?</label
+                >
+                <div style="margin-top: 10px">
+                  <label style="display: inline-block; margin-right: 20px">
+                    <input
+                      type="radio"
+                      name="aderiu"
+                      value="sim"
+                      onclick="toggleView('fotosCampanhaDiv')"
+                    />
+                    Sim
+                  </label>
+                  <label style="display: inline-block">
+                    <input
+                      type="radio"
+                      name="aderiu"
+                      value="nao"
+                      onclick="document.getElementById('fotosCampanhaDiv').style.display = 'none'"
+                    />
+                    Não
+                  </label>
+                </div>
+              </div>
+
+              <div
+                id="fotosCampanhaDiv"
+                style="display: none; margin-top: 20px"
+              >
+                <div class="form-group">
+                  <label for="fotoCampanha"
+                    >Submeta sua foto da franquia durante a campanha:</label
+                  >
+                  <input
+                    type="file"
+                    id="fotoCampanha"
+                    name="fotoCampanha"
+                    accept="image/*"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="descricaoCampanha"
+                    >Descreva brevemente as ações realizadas:</label
+                  >
+                  <textarea
+                    id="descricaoCampanha"
+                    name="descricaoCampanha"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn" style="margin-top: 20px">
+                Enviar
+              </button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Histórico de Participações</h3>
+            <p>
+              Confira o histórico de participação da sua franquia nas campanhas
+              anteriores.
+            </p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Mês/Ano</th>
+                  <th>Campanha</th>
+                  <th>Participação</th>
+                  <th>Foto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Abril/2025</td>
+                  <td>Saúde em Primeiro Lugar</td>
+                  <td><span style="color: var(--success-color)">Sim</span></td>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn"
+                      style="padding: 5px 10px; font-size: 0.9rem"
+                      >Ver Foto</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Março/2025</td>
+                  <td>Mês da Mulher</td>
+                  <td><span style="color: var(--success-color)">Sim</span></td>
+                  <td>
+                    <a
+                      href="#"
+                      class="btn"
+                      style="padding: 5px 10px; font-size: 0.9rem"
+                      >Ver Foto</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Fevereiro/2025</td>
+                  <td>Carnaval Saudável</td>
+                  <td><span style="color: var(--danger-color)">Não</span></td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Aba HALL DA EXCELÊNCIA -->
+        <div id="hall-excelencia" class="tab-content tab-pane">
+          <h2>Hall da Excelência</h2>
+
+          <div class="card">
+            <h3>Reconhecimento de Excelência em Gestão de Pessoas</h3>
+            <p>
+              Aqui estão as franquias que se destacaram em gestão de pessoas ao
+              longo dos anos, reconhecidas em nossa convenção anual.
+            </p>
+
+            <div class="award-year">
+              <h3>2025</h3>
+              <ul class="award-list">
+                <li class="award-item">
+                  <span class="award-title">1º Lugar:</span> Bio Shopping DF
+                  Plaza
+                </li>
+                <li class="award-item">
+                  <span class="award-title">2º Lugar:</span> Bio Sams Club Águas
+                  Claras
+                </li>
+                <li class="award-item">
+                  <span class="award-title">3º Lugar:</span> Bio Araucárias
+                </li>
+              </ul>
+
+              <h4 style="margin-top: 20px; color: var(--secondary-color)">
+                Subcategorias:
+              </h4>
+              <ul class="award-list">
+                <li class="award-item">
+                  <span class="award-title">Prêmio Espírito de Equipe:</span>
+                  Bio Águas Claras Shopping
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Talento Valorizado:</span>
+                  Bio Castanheiras
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Gestão Transformadora:</span>
+                  Bio Passeio Shopping
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Comunicação de Ouro:</span>
+                  Bio Boulevard Shopping
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Raiz Forte:</span>
+                  Bio Sudoeste
+                </li>
+              </ul>
+            </div>
+
+            <div class="award-year">
+              <h3>2024</h3>
+              <ul class="award-list">
+                <li class="award-item">
+                  <span class="award-title">1º Lugar:</span> Bio Sams Club Águas
+                  Claras
+                </li>
+                <li class="award-item">
+                  <span class="award-title">2º Lugar:</span> Bio Araucárias
+                </li>
+                <li class="award-item">
+                  <span class="award-title">3º Lugar:</span> Bio Shopping DF
+                  Plaza
+                </li>
+              </ul>
+
+              <h4 style="margin-top: 20px; color: var(--secondary-color)">
+                Subcategorias:
+              </h4>
+              <ul class="award-list">
+                <li class="award-item">
+                  <span class="award-title">Prêmio Espírito de Equipe:</span>
+                  Bio Castanheiras
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Talento Valorizado:</span>
+                  Bio Águas Claras Shopping
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Gestão Transformadora:</span>
+                  Bio Boulevard Shopping
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Comunicação de Ouro:</span>
+                  Bio Passeio Shopping
+                </li>
+                <li class="award-item">
+                  <span class="award-title">Prêmio Raiz Forte:</span>
+                  Bio Sudoeste
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba MANUAIS DA COMUNIDADE BIO+ -->
+        <div id="manuais" class="tab-content tab-pane">
+          <h2>Manuais da Comunidade Bio+</h2>
+
+          <div class="card">
+            <h3>Documentos e Manuais</h3>
+            <p>
+              Acesse os manuais e documentos importantes para a gestão da sua
+              franquia.
+            </p>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin-top: 30px;
+              "
+            >
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 20px;
+                  border-radius: 8px;
+                  text-align: center;
+                "
+              >
+                <img
+                  src="../assets/images/pdf-icon.png"
+                  alt="PDF"
+                  style="width: 64px; height: 64px; margin-bottom: 15px"
+                />
+                <h4>Manual de Gestão de Pessoas</h4>
+                <p>Manual do Franqueado Bio+</p>
+                <a href="#" class="btn" style="margin-top: 15px">Download</a>
+              </div>
+
+              <div
+                style="
+                  background-color: #f9f9f9;
+                  padding: 20px;
+                  border-radius: 8px;
+                  text-align: center;
+                "
+              >
+                <img
+                  src="../assets/images/pdf-icon.png"
+                  alt="PDF"
+                  style="width: 64px; height: 64px; margin-bottom: 15px"
+                />
+                <h4>Manual de Diretrizes Éticas</h4>
+                <p>Valores da Biomundo</p>
+                <a href="#" class="btn" style="margin-top: 15px">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+        <div class="copyright">
+          &copy; 2025 Biomundo. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="js/gaia-chat.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Inicializa os gráficos
+        initializeGestoresCharts();
+
+        // Configuração do formulário de cadastro
+        const funcaoSelect = document.getElementById("funcaoFunc");
+        const outraFuncaoGroup = document.getElementById("outraFuncaoGroup");
+
+        if (funcaoSelect) {
+          funcaoSelect.addEventListener("change", function () {
+            if (this.value === "outro") {
+              outraFuncaoGroup.style.display = "block";
+            } else {
+              outraFuncaoGroup.style.display = "none";
+            }
+          });
+        }
+
+        // Configuração do formulário de promoção
+        const tipoCadastroRadios = document.querySelectorAll(
+          'input[name="tipoCadastro"]'
+        );
+        const promocaoFields = document.getElementById("promocaoFields");
+
+        tipoCadastroRadios.forEach((radio) => {
+          radio.addEventListener("change", function () {
+            if (this.value === "promocao") {
+              promocaoFields.style.display = "block";
+            } else {
+              promocaoFields.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Função para inicializar os gráficos da área de gestores
+      function initializeGestoresCharts() {
+        // Gráfico de Satisfação
+        const satisfacaoCtx = document.getElementById("satisfacaoChart");
+        if (satisfacaoCtx) {
+          new Chart(satisfacaoCtx, {
+            type: "line",
+            data: {
+              labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+              datasets: [
+                {
+                  label: "Índice de Satisfação (%)",
+                  data: [75, 78, 80, 82, 85],
+                  backgroundColor: "rgba(0, 102, 51, 0.2)",
+                  borderColor: "rgba(0, 102, 51, 1)",
+                  borderWidth: 2,
+                  tension: 0.3,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Engajamento
+        const engajamentoCtx = document.getElementById("engajamentoChart");
+        if (engajamentoCtx) {
+          new Chart(engajamentoCtx, {
+            type: "doughnut",
+            data: {
+              labels: ["Alto", "Médio", "Baixo"],
+              datasets: [
+                {
+                  data: [65, 25, 10],
+                  backgroundColor: [
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(248, 161, 0, 0.7)",
+                    "rgba(220, 53, 69, 0.7)",
+                  ],
+                  borderColor: [
+                    "rgba(0, 102, 51, 1)",
+                    "rgba(248, 161, 0, 1)",
+                    "rgba(220, 53, 69, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Comunicação
+        const comunicacaoCtx = document.getElementById("comunicacaoChart");
+        if (comunicacaoCtx) {
+          new Chart(comunicacaoCtx, {
+            type: "bar",
+            data: {
+              labels: ["Clareza", "Frequência", "Eficácia", "Feedback"],
+              datasets: [
+                {
+                  label: "Avaliação (%)",
+                  data: [82, 75, 78, 70],
+                  backgroundColor: "rgba(248, 161, 0, 0.7)",
+                  borderColor: "rgba(248, 161, 0, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Liderança
+        const liderancaCtx = document.getElementById("liderancaChart");
+        if (liderancaCtx) {
+          new Chart(liderancaCtx, {
+            type: "radar",
+            data: {
+              labels: [
+                "Comunicação",
+                "Suporte",
+                "Reconhecimento",
+                "Desenvolvimento",
+                "Feedback",
+              ],
+              datasets: [
+                {
+                  label: "Avaliação (%)",
+                  data: [75, 80, 70, 65, 78],
+                  backgroundColor: "rgba(0, 102, 51, 0.2)",
+                  borderColor: "rgba(0, 102, 51, 1)",
+                  borderWidth: 2,
+                  pointBackgroundColor: "rgba(0, 102, 51, 1)",
+                },
+              ],
+            },
+            options: {
+              scales: {
+                r: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+              responsive: true,
+            },
+          });
+        }
+
+        // Gráfico de Ambiente
+        const ambienteCtx = document.getElementById("ambienteChart");
+        if (ambienteCtx) {
+          new Chart(ambienteCtx, {
+            type: "polarArea",
+            data: {
+              labels: [
+                "Infraestrutura",
+                "Relacionamentos",
+                "Bem-estar",
+                "Equilíbrio",
+              ],
+              datasets: [
+                {
+                  data: [85, 78, 80, 75],
+                  backgroundColor: [
+                    "rgba(0, 102, 51, 0.7)",
+                    "rgba(248, 161, 0, 0.7)",
+                    "rgba(23, 162, 184, 0.7)",
+                    "rgba(108, 117, 125, 0.7)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+            },
+          });
+        }
+      }
+    </script>
+    <!-- Script para garantir a criação do botão de chat -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          // Verifica se o botão já existe
+          if (!document.getElementById("chat-button")) {
+            console.log("Forçando criação do botão de chat");
+            // Cria o botão de chat
+            const chatButton = document.createElement("div");
+            chatButton.className = "chat-button";
+            chatButton.innerHTML = '<i class="fas fa-comment"></i>';
+            chatButton.setAttribute("id", "chat-button");
+            chatButton.setAttribute(
+              "title",
+              "Converse com a Gaia - Assistente Virtual"
+            );
+            document.body.appendChild(chatButton);
+
+            // Verificamos também se o container existe
+            let chatContainer = document.querySelector(".chat-container");
+            if (!chatContainer) {
+              console.log("Forçando criação do container do chat");
+              // Cria o container do chat
+              chatContainer = document.createElement("div");
+              chatContainer.className = "chat-container";
+              chatContainer.innerHTML = `
+                <div class="chat-header">
+                  <div class="chat-title">
+                    <img src="../assets/images/gaia-ai.jpg" alt="Gaia IA" class="chat-avatar" />
+                    <span>Gaia - Assistente Virtual</span>
+                  </div>
+                  <button class="chat-close" id="chat-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                  <div class="message bot-message">
+                    <p>Olá, gestor(a)! Eu sou a Gaia, assistente virtual do BioMundo. Como posso auxiliá-lo(a) hoje?</p>
+                  </div>
+                </div>
+                <div class="chat-input-container">
+                  <input type="text" id="chat-input" placeholder="Digite sua mensagem..." />
+                  <button id="chat-send">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              `;
+              document.body.appendChild(chatContainer);
+              chatContainer.style.display = "none";
+            }
+
+            // Adiciona o evento de clique para abrir o chat
+            chatButton.addEventListener("click", function () {
+              console.log("Botão clicado, abrindo chat");
+              chatContainer.style.display = "flex";
+
+              // Adiciona o evento de fechar se necessário
+              const closeButton = document.getElementById("chat-close");
+              if (closeButton) {
+                closeButton.addEventListener("click", function () {
+                  chatContainer.style.display = "none";
+                });
+              }
+
+              // Tenta focar no input
+              const chatInput = document.getElementById("chat-input");
+              if (chatInput) {
+                chatInput.focus();
+              }
+            });
+          } else {
+            // Se o botão já existe, garantimos que o evento de clique esteja funcionando
+            const chatButton = document.getElementById("chat-button");
+            const chatContainer = document.querySelector(".chat-container");
+
+            // Remove eventos anteriores para evitar duplicação
+            chatButton.replaceWith(chatButton.cloneNode(true));
+
+            // Adiciona o evento novamente
+            document
+              .getElementById("chat-button")
+              .addEventListener("click", function () {
+                console.log("Botão clicado, abrindo chat");
+                if (chatContainer) {
+                  chatContainer.style.display = "flex";
+
+                  // Tenta focar no input
+                  const chatInput = document.getElementById("chat-input");
+                  if (chatInput) {
+                    chatInput.focus();
+                  }
+                } else {
+                  console.error("Container do chat não encontrado!");
+                }
+              });
+          }
+        }, 1000); // Aguarda 1 segundo para garantir que tudo esteja carregado
+      });
+
+      // Função auxiliar para mostrar/esconder elementos
+      function toggleView(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+          if (element.style.display === "none") {
+            element.style.display = "block";
+          } else {
+            element.style.display = "none";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

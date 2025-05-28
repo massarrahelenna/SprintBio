@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biomais - Portal do Colaborador</title>
+    <link rel="stylesheet" href="../assets/css/style-modern.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aller:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/chat-style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="header-container">
+          <div class="logo">
+            <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+          </div>
+          <nav class="main-nav">
+            <div class="nav-container">
+              <ul class="nav-tabs">
+                <li>
+                  <a href="#mural" class="active" data-tab="mural">Mural</a>
+                </li>
+                <li><a href="#carreira" data-tab="carreira">Carreira</a></li>
+                <li>
+                  <a href="#pesquisa-clima" data-tab="pesquisa-clima"
+                    >Pesquisa de Clima</a
+                  >
+                </li>
+                <li><a href="#gaia" data-tab="gaia">Gaia a IA</a></li>
+                <li><a href="#ouvidoria" data-tab="ouvidoria">Ouvidoria</a></li>
+                <li><a href="#hall" data-tab="hall">Hall da Excelência</a></li>
+              </ul>
+            </div>
+          </nav>
+          <a href="../index.html" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Sair
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <!-- Aba Mural -->
+        <div id="mural" class="tab-content tab-pane active">
+          <h2>Mural</h2>
+
+          <h3>Equipes Ganhadoras - Prêmios de Gestão de Pessoas</h3>
+          <div class="gallery">
+            <div class="gallery-item">
+              <img src="../assets/images/equipe-1.jpg" alt="Equipe 1º Lugar" />
+              <div class="gallery-caption">
+                1º Lugar - Bio Shopping DF Plaza
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img src="../assets/images/equipe-2.jpg" alt="Equipe 2º Lugar" />
+              <div class="gallery-caption">
+                2º Lugar - Bio Sams Club Águas Claras
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img src="../assets/images/equipe-3.jpg" alt="Equipe 3º Lugar" />
+              <div class="gallery-caption">3º Lugar - Bio Araucárias</div>
+            </div>
+          </div>
+
+          <h3>Campanhas de Endomarketing</h3>
+          <div class="gallery">
+            <div class="gallery-item">
+              <img
+                src="../assets/images/campanhas/campanha-centro.jpg"
+                alt="Campanha Franquia Centro"
+              />
+              <div class="gallery-caption">
+                Campanha Sustentabilidade - Bio Shopping DF Plaza
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img
+                src="../assets/images/campanha-placeholder.jpg"
+                alt="Espaço para Campanha"
+              />
+              <div class="gallery-caption">Espaço para novas campanhas</div>
+            </div>
+            <div class="gallery-item">
+              <img
+                src="../assets/images/campanha-placeholder.jpg"
+                alt="Espaço para Campanha"
+              />
+              <div class="gallery-caption">Espaço para novas campanhas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba Carreira -->
+        <div id="carreira" class="tab-content tab-pane">
+          <h2>Carreira</h2>
+
+          <div class="card">
+            <div class="card-title">Dados Profissionais</div>
+            <div class="profile-info">
+              <div class="profile-field">
+                <strong>Nome completo</strong>
+                <span>Maria Silva Santos</span>
+              </div>
+              <div class="profile-field">
+                <strong>CPF</strong>
+                <span>123.456.789-00</span>
+              </div>
+              <div class="profile-field">
+                <strong>Email</strong>
+                <span>maria.silva@biomundo.com.br</span>
+              </div>
+              <div class="profile-field">
+                <strong>Data de ingresso na Biomundo</strong>
+                <span>15/03/2022</span>
+              </div>
+              <div class="profile-field">
+                <strong>Franquia atual</strong>
+                <span>Bio Shopping DF Plaza</span>
+              </div>
+              <div class="profile-field">
+                <strong>Data de ingresso na franquia atual</strong>
+                <span>15/03/2022</span>
+              </div>
+              <div class="profile-field">
+                <strong>Função atual</strong>
+                <span>Consultora de Vendas</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Histórico Profissional</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Evento</th>
+                  <th>Detalhes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>15/03/2022</td>
+                  <td>Contratação</td>
+                  <td>Contratação como Atendente - Bio Shopping DF Plaza</td>
+                </tr>
+                <tr>
+                  <td>10/10/2022</td>
+                  <td>Promoção</td>
+                  <td>Promovida para Consultora de Vendas</td>
+                </tr>
+                <tr>
+                  <td>15/03/2023</td>
+                  <td>Treinamento</td>
+                  <td>
+                    Conclusão do Treinamento Avançado em Produtos Naturais
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Desligamento</div>
+            <p>
+              Em caso de desligamento, utilize este formulário para registrar
+              sua saída.
+            </p>
+            <form>
+              <div class="form-group">
+                <label for="motivo">Motivo do desligamento</label>
+                <select id="motivo">
+                  <option value="">Selecione um motivo</option>
+                  <option value="voluntario">Desligamento voluntário</option>
+                  <option value="outro-emprego">Outro emprego</option>
+                  <option value="mudanca">Mudança de cidade/estado</option>
+                  <option value="estudos">Foco em estudos</option>
+                  <option value="outro">Outro motivo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="comentario">Comentários adicionais</label>
+                <textarea
+                  id="comentario"
+                  placeholder="Compartilhe sua experiência na Biomundo e sugestões de melhoria"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn">Enviar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Aba Pesquisa de Clima -->
+        <div id="pesquisa-clima" class="tab-content tab-pane">
+          <h2>Pesquisa de Clima</h2>
+
+          <div class="card">
+            <div class="card-title">Pesquisa de Clima Organizacional</div>
+            <p>
+              Por favor, responda às perguntas abaixo com sinceridade. Suas
+              respostas são anônimas e ajudarão a melhorar o ambiente de
+              trabalho.
+            </p>
+
+            <form>
+              <div class="form-group">
+                <label
+                  >1. Como você avalia o ambiente de trabalho na sua
+                  franquia?</label
+                >
+                <div class="rating">
+                  <input
+                    type="radio"
+                    name="ambiente"
+                    value="1"
+                    id="ambiente1"
+                  /><label for="ambiente1">1</label>
+                  <input
+                    type="radio"
+                    name="ambiente"
+                    value="2"
+                    id="ambiente2"
+                  /><label for="ambiente2">2</label>
+                  <input
+                    type="radio"
+                    name="ambiente"
+                    value="3"
+                    id="ambiente3"
+                  /><label for="ambiente3">3</label>
+                  <input
+                    type="radio"
+                    name="ambiente"
+                    value="4"
+                    id="ambiente4"
+                  /><label for="ambiente4">4</label>
+                  <input
+                    type="radio"
+                    name="ambiente"
+                    value="5"
+                    id="ambiente5"
+                  /><label for="ambiente5">5</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>2. Você se sente valorizado(a) pela empresa?</label>
+                <div class="rating">
+                  <input
+                    type="radio"
+                    name="valorizacao"
+                    value="1"
+                    id="valorizacao1"
+                  /><label for="valorizacao1">1</label>
+                  <input
+                    type="radio"
+                    name="valorizacao"
+                    value="2"
+                    id="valorizacao2"
+                  /><label for="valorizacao2">2</label>
+                  <input
+                    type="radio"
+                    name="valorizacao"
+                    value="3"
+                    id="valorizacao3"
+                  /><label for="valorizacao3">3</label>
+                  <input
+                    type="radio"
+                    name="valorizacao"
+                    value="4"
+                    id="valorizacao4"
+                  /><label for="valorizacao4">4</label>
+                  <input
+                    type="radio"
+                    name="valorizacao"
+                    value="5"
+                    id="valorizacao5"
+                  /><label for="valorizacao5">5</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >3. Como você avalia a comunicação entre a equipe e os
+                  gestores?</label
+                >
+                <div class="rating">
+                  <input
+                    type="radio"
+                    name="comunicacao"
+                    value="1"
+                    id="comunicacao1"
+                  /><label for="comunicacao1">1</label>
+                  <input
+                    type="radio"
+                    name="comunicacao"
+                    value="2"
+                    id="comunicacao2"
+                  /><label for="comunicacao2">2</label>
+                  <input
+                    type="radio"
+                    name="comunicacao"
+                    value="3"
+                    id="comunicacao3"
+                  /><label for="comunicacao3">3</label>
+                  <input
+                    type="radio"
+                    name="comunicacao"
+                    value="4"
+                    id="comunicacao4"
+                  /><label for="comunicacao4">4</label>
+                  <input
+                    type="radio"
+                    name="comunicacao"
+                    value="5"
+                    id="comunicacao5"
+                  /><label for="comunicacao5">5</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >4. Você enxerga oportunidades de crescimento na
+                  empresa?</label
+                >
+                <div class="rating">
+                  <input
+                    type="radio"
+                    name="crescimento"
+                    value="1"
+                    id="crescimento1"
+                  /><label for="crescimento1">1</label>
+                  <input
+                    type="radio"
+                    name="crescimento"
+                    value="2"
+                    id="crescimento2"
+                  /><label for="crescimento2">2</label>
+                  <input
+                    type="radio"
+                    name="crescimento"
+                    value="3"
+                    id="crescimento3"
+                  /><label for="crescimento3">3</label>
+                  <input
+                    type="radio"
+                    name="crescimento"
+                    value="4"
+                    id="crescimento4"
+                  /><label for="crescimento4">4</label>
+                  <input
+                    type="radio"
+                    name="crescimento"
+                    value="5"
+                    id="crescimento5"
+                  /><label for="crescimento5">5</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >5. O que poderia ser melhorado no seu ambiente de
+                  trabalho?</label
+                >
+                <textarea placeholder="Compartilhe suas sugestões"></textarea>
+              </div>
+
+              <button type="submit" class="btn">Enviar Pesquisa</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Resultados da Última Pesquisa</div>
+            <div class="dashboard">
+              <div class="chart-container">
+                <div class="chart-title">Satisfação Geral</div>
+                <div class="chart" id="satisfacao-chart">
+                  <!-- Gráfico será carregado via JavaScript -->
+                  <div class="placeholder-chart">
+                    <div class="progress">
+                      <div class="progress-bar" style="width: 78%"></div>
+                    </div>
+                    <p>Índice de satisfação: 78%</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chart-container">
+                <div class="chart-title">Áreas de Melhoria</div>
+                <div class="chart" id="melhoria-chart">
+                  <!-- Gráfico será carregado via JavaScript -->
+                  <ul class="chart-list">
+                    <li>
+                      <span>Comunicação</span>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 65%"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <span>Ambiente físico</span>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 82%"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <span>Oportunidades de crescimento</span>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba Gaia a IA -->
+        <div id="gaia" class="tab-content tab-pane">
+          <h2>Gaia a IA</h2>
+
+          <div class="card">
+            <div class="card-title">Conversa com a Gaia</div>
+            <p>
+              Use o botão de chat no canto inferior direito da tela para
+              conversar com a Gaia, nossa assistente virtual que pode responder
+              suas dúvidas sobre a empresa, produtos e processos internos.
+            </p>
+            <p>
+              <strong>Dica:</strong> Você pode clicar no botão
+              <i class="fas fa-comment"></i> a qualquer momento para iniciar ou
+              continuar sua conversa, mesmo quando estiver em outras páginas.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Tópicos Populares</div>
+            <div class="topics-container">
+              <div class="topic">
+                <h4>Produtos Naturais</h4>
+                <p>
+                  Tire dúvidas sobre os produtos Bio Mundo, ingredientes,
+                  benefícios e recomendações.
+                </p>
+                <button
+                  class="btn btn-secondary topic-btn"
+                  data-topic="produtos"
+                  onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Me fale sobre os produtos naturais', 500);"
+                >
+                  Perguntar
+                </button>
+              </div>
+              <div class="topic">
+                <h4>Comunidade Bio Mundo</h4>
+                <p>
+                  Saiba mais sobre eventos, iniciativas e valores da nossa
+                  comunidade.
+                </p>
+                <button
+                  class="btn btn-secondary topic-btn"
+                  data-topic="comunidade"
+                  onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'O que é a comunidade Bio Mundo?', 500);"
+                >
+                  Perguntar
+                </button>
+              </div>
+              <div class="topic">
+                <h4>Carreira e Desenvolvimento</h4>
+                <p>
+                  Informações sobre oportunidades de crescimento, treinamentos e
+                  certificações.
+                </p>
+                <button
+                  class="btn btn-secondary topic-btn"
+                  data-topic="carreira"
+                  onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Como posso crescer na empresa?', 500);"
+                >
+                  Perguntar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba Ouvidoria -->
+        <div id="ouvidoria" class="tab-content tab-pane">
+          <h2>Ouvidoria</h2>
+
+          <div class="card">
+            <div class="card-title">Para que serve?</div>
+            <p>
+              A aba "Ouvidoria" é um canal direto de comunicação entre você e a
+              matriz da Biomundo. Aqui, você pode enviar mensagens ou
+              requerimentos, garantindo que suas dúvidas, sugestões ou
+              preocupações sejam ouvidas e tratadas com a devida atenção.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Envie sua mensagem</div>
+            <p>
+              Utilize o espaço abaixo para escrever livremente. Sua voz é
+              importante para nós!
+            </p>
+
+            <form>
+              <div class="form-group">
+                <label for="assunto">Assunto</label>
+                <input
+                  type="text"
+                  id="assunto"
+                  placeholder="Digite o assunto da sua mensagem"
+                />
+              </div>
+              <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea
+                  id="mensagem"
+                  placeholder="Escreva sua mensagem, sugestão ou solicitação"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="anexo">Anexar arquivo (opcional)</label>
+                <input type="file" id="anexo" />
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" id="anonimo" /> Desejo enviar
+                  anonimamente
+                </label>
+              </div>
+              <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Minhas Mensagens</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Assunto</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10/05/2025</td>
+                  <td>Sugestão de melhoria no atendimento</td>
+                  <td><span class="badge badge-primary">Em análise</span></td>
+                  <td><a href="#" class="btn btn-small">Ver detalhes</a></td>
+                </tr>
+                <tr>
+                  <td>28/04/2025</td>
+                  <td>Dúvida sobre benefícios</td>
+                  <td><span class="badge badge-secondary">Respondido</span></td>
+                  <td><a href="#" class="btn btn-small">Ver detalhes</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Aba Hall da Excelência -->
+        <div id="hall" class="tab-content tab-pane">
+          <h2>Hall da Excelência</h2>
+
+          <div class="award-year">
+            <h3>2025</h3>
+            <ul class="award-list">
+              <li class="award-item">
+                <div class="award-title">1º Lugar - Gestão de Pessoas</div>
+                <p>Bio Shopping DF Plaza</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">2º Lugar - Gestão de Pessoas</div>
+                <p>Bio Sams Club Águas Claras</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">3º Lugar - Gestão de Pessoas</div>
+                <p>Bio Araucárias</p>
+              </li>
+            </ul>
+
+            <h4>Subcategorias</h4>
+            <ul class="award-list">
+              <li class="award-item">
+                <div class="award-title">Prêmio Espírito de Equipe</div>
+                <p>Bio Águas Claras Shopping</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Talento Valorizado</div>
+                <p>Bio Castanheiras</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Gestão Transformadora</div>
+                <p>Bio Shopping DF Plaza</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Comunicação de Ouro</div>
+                <p>Bio Sams Club Águas Claras</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Raiz Forte</div>
+                <p>Bio Araucárias</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="award-year">
+            <h3>2024</h3>
+            <ul class="award-list">
+              <li class="award-item">
+                <div class="award-title">1º Lugar - Gestão de Pessoas</div>
+                <p>Bio Sams Club Águas Claras</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">2º Lugar - Gestão de Pessoas</div>
+                <p>Bio Shopping DF Plaza</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">3º Lugar - Gestão de Pessoas</div>
+                <p>Bio Castanheiras</p>
+              </li>
+            </ul>
+
+            <h4>Subcategorias</h4>
+            <ul class="award-list">
+              <li class="award-item">
+                <div class="award-title">Prêmio Espírito de Equipe</div>
+                <p>Bio Araucárias</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Talento Valorizado</div>
+                <p>Bio Sams Club Águas Claras</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Gestão Transformadora</div>
+                <p>Bio Águas Claras Shopping</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Comunicação de Ouro</div>
+                <p>Bio Shopping DF Plaza</p>
+              </li>
+              <li class="award-item">
+                <div class="award-title">Prêmio Raiz Forte</div>
+                <p>Bio Castanheiras</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+        <div class="copyright">
+          &copy; 2025 Biomundo. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="js/gaia-chat.js"></script>
+    <script>
+      // Script de navegação por abas (existente)
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabLinks = document.querySelectorAll(".nav-tabs a");
+        const tabContents = document.querySelectorAll(".tab-pane");
+
+        tabLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Remove a classe active de todas as abas
+            tabLinks.forEach((item) => item.classList.remove("active"));
+            tabContents.forEach((item) => item.classList.remove("active"));
+
+            // Adiciona a classe active na aba clicada
+            this.classList.add("active");
+
+            // Mostra o conteúdo correspondente
+            const tabId = this.getAttribute("data-tab");
+            document.getElementById(tabId).classList.add("active");
+
+            // Salva a aba ativa no localStorage
+            localStorage.setItem("activeTab", tabId);
+          });
+        });
+
+        // Verifica se há uma aba salva no localStorage
+        const activeTab = localStorage.getItem("activeTab");
+        if (activeTab) {
+          const activeLink = document.querySelector(
+            `.nav-tabs a[data-tab="${activeTab}"]`
+          );
+          if (activeLink) {
+            activeLink.click();
+          }
+        }
+      });
+
+      // Script para garantir a criação do botão de chat
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          // Verifica se o botão já existe
+          if (!document.getElementById("chat-button")) {
+            console.log("Forçando criação do botão de chat");
+            // Cria o botão de chat
+            const chatButton = document.createElement("div");
+            chatButton.className = "chat-button";
+            chatButton.innerHTML = '<i class="fas fa-comment"></i>';
+            chatButton.setAttribute("id", "chat-button");
+            chatButton.setAttribute(
+              "title",
+              "Converse com a Gaia - Assistente Virtual"
+            );
+            document.body.appendChild(chatButton);
+
+            // Verificamos também se o container existe
+            let chatContainer = document.querySelector(".chat-container");
+            if (!chatContainer) {
+              console.log("Forçando criação do container do chat");
+              // Cria o container do chat
+              chatContainer = document.createElement("div");
+              chatContainer.className = "chat-container";
+              chatContainer.innerHTML = `
+                <div class="chat-header">
+                  <div class="chat-title">
+                    <img src="../assets/images/gaia-ai.jpg" alt="Gaia IA" class="chat-avatar" />
+                    <span>Gaia - Assistente Virtual</span>
+                  </div>
+                  <button class="chat-close" id="chat-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                  <div class="message bot-message">
+                    <p>Olá! Eu sou a Gaia, assistente virtual do BioMundo. Como posso ajudar você hoje?</p>
+                  </div>
+                </div>
+                <div class="chat-input-container">
+                  <input type="text" id="chat-input" placeholder="Digite sua mensagem..." />
+                  <button id="chat-send">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              `;
+              document.body.appendChild(chatContainer);
+              chatContainer.style.display = "none";
+            }
+
+            // Adiciona o evento de clique para abrir o chat
+            chatButton.addEventListener("click", function () {
+              console.log("Botão clicado, abrindo chat");
+              chatContainer.style.display = "flex";
+
+              // Adiciona o evento de fechar se necessário
+              const closeButton = document.getElementById("chat-close");
+              if (closeButton) {
+                closeButton.addEventListener("click", function () {
+                  chatContainer.style.display = "none";
+                });
+              }
+
+              // Tenta focar no input
+              const chatInput = document.getElementById("chat-input");
+              if (chatInput) {
+                chatInput.focus();
+              }
+            });
+          } else {
+            // Se o botão já existe, garantimos que o evento de clique esteja funcionando
+            const chatButton = document.getElementById("chat-button");
+            const chatContainer = document.querySelector(".chat-container");
+
+            // Remove eventos anteriores para evitar duplicação
+            chatButton.replaceWith(chatButton.cloneNode(true));
+
+            // Adiciona o evento novamente
+            document
+              .getElementById("chat-button")
+              .addEventListener("click", function () {
+                console.log("Botão clicado, abrindo chat");
+                if (chatContainer) {
+                  chatContainer.style.display = "flex";
+
+                  // Tenta focar no input
+                  const chatInput = document.getElementById("chat-input");
+                  if (chatInput) {
+                    chatInput.focus();
+                  }
+                } else {
+                  console.error("Container do chat não encontrado!");
+                }
+              });
+          }
+        }, 1000); // Aguarda 1 segundo para garantir que tudo esteja carregado
+      });
+    </script>
+  </body>
+</html>
