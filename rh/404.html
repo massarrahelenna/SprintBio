@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>404 - Página não encontrada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../assets/css/style-modern.css" />
+    <link rel="stylesheet" href="../assets/css/chat-style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aller:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 120px);
+        text-align: center;
+        padding: 20px;
+      }
+
+      .error-code {
+        font-size: 8rem;
+        font-weight: bold;
+        color: #e74c3c;
+      }
+
+      .error-message {
+        font-size: 1.8rem;
+        color: #333;
+      }
+
+      .home-link {
+        margin-top: 20px;
+        text-decoration: none;
+        background-color: #1abc9c;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+      }
+
+      .home-link:hover {
+        background-color: #16a085;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="header-container">
+          <div class="logo">
+            <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+          </div>
+          <nav class="main-nav">
+            <div class="nav-container">
+              <ul class="nav-tabs">
+                <li><a href="#">Página não encontrada</a></li>
+              </ul>
+            </div>
+          </nav>
+          <a href="../index.html" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Sair
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="error-code">404</div>
+      <div class="error-message">Ops! A página que você procura não existe.</div>
+      <a href="../index.html" class="home-link">
+        <i class="fas fa-home"></i> Voltar à Página Inicial
+      </a>
+    </main>
+  </body>
+</html>

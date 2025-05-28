@@ -176,111 +176,59 @@ function removeTypingIndicator() {
 
 // Função que gera respostas simuladas para o chat - versão para RH
 function gerarRespostaSimulada(mensagem) {
-  // Converte a mensagem para minúsculas para facilitar a correspondência
   const msgLower = mensagem.toLowerCase();
 
-  // Base de conhecimento para RH
-  if (
-    msgLower.includes("olá") ||
-    msgLower.includes("oi") ||
-    msgLower.includes("ola") ||
-    msgLower.includes("bom dia") ||
-    msgLower.includes("boa tarde") ||
-    msgLower.includes("boa noite")
-  ) {
-    return "Olá! Como posso auxiliá-lo(a) hoje? Estou aqui para fornecer informações sobre processos de RH, políticas de pessoas e gestão de talentos da Bio Mundo.";
+  const intents = [
+    {
+      keywords: ["olá", "oi", "ola", "bom dia", "boa tarde", "boa noite"],
+      response: "Olá! Como posso auxiliá-lo(a) hoje? Estou aqui para fornecer informações sobre processos de RH, políticas de pessoas e gestão de talentos da Bio Mundo.",
+    },
+    {
+      keywords: ["recrutamento", "seleção", "selecao", "vaga", "candidato"],
+      response: "No sistema de Recrutamento e Seleção você pode abrir novas requisições, acompanhar os processos em andamento e verificar o status dos candidatos. Você também pode acessar o banco de talentos para buscar perfis específicos e configurar os testes técnicos para cada posição.",
+    },
+    {
+      keywords: ["folha", "pagamento", "salário", "salario", "holerite"],
+      response: "O processamento da folha de pagamento é realizado até o dia 25 de cada mês. Você pode acessar o sistema de folha para verificar cálculos, gerar relatórios e emitir holerites. Lembre-se que alterações salariais precisam ser registradas até o dia 20 para serem processadas no mesmo mês.",
+    },
+    {
+      keywords: ["benefício", "beneficio", "vale", "plano de saúde", "plano de saude"],
+      response: "A gestão de benefícios é feita pelo sistema de RH integrado. Nele, você pode cadastrar novos colaboradores, alterar planos, emitir 2ª via de carteiras e gerar relatórios de utilização. Lembre-se que inclusões no plano de saúde devem ser feitas até o dia 15 para vigência no mês seguinte.",
+    },
+    {
+      keywords: ["ponto", "frequência", "frequencia", "banco de horas", "hora extra"],
+      response: "O sistema de controle de ponto está disponível na plataforma de RH. Como administrador, você consegue aprovar ajustes, gerar relatórios de frequência, acompanhar o banco de horas e configurar compensações. O fechamento ocorre no dia 20 de cada mês, após esta data não é possível fazer alterações no período anterior.",
+    },
+    {
+      keywords: ["treinamento", "desenvolvimento", "capacitação", "capacitacao", "curso"],
+      response: "Na plataforma de Treinamento e Desenvolvimento você pode cadastrar treinamentos internos, aprovar inscrições da equipe e acompanhar os indicadores de capacitação. Os treinamentos obrigatórios são atualizados a cada trimestre e comunicados automaticamente via e-mail corporativo.",
+    },
+    {
+      keywords: ["desligamento", "rescisão", "rescisao", "demissão", "demissao"],
+      response: "Para iniciar o processo de desligamento, acesse o módulo de 'Desligamento' no sistema de RH. Você poderá preencher os motivos, encaminhar para validação da diretoria e agendar entrevistas de saída. A rescisão será processada em até 10 dias após o último dia trabalhado.",
+    },
+    {
+      keywords: ["avaliação", "avaliacao", "desempenho", "feedback"],
+      response: "O ciclo de avaliação de desempenho ocorre duas vezes ao ano. Acesse o portal de RH para revisar as metas, registrar feedbacks contínuos e acompanhar os planos de desenvolvimento. Os gestores devem finalizar as avaliações até o último dia útil do mês de encerramento do ciclo.",
+    },
+    {
+      keywords: ["documento", "declaração", "declaracao", "atestado", "contrato"],
+      response: "Todos os documentos, como declarações, contratos e comprovantes de vínculo, podem ser solicitados e emitidos pela área 'Documentos RH' no portal interno. Os documentos são liberados em até 3 dias úteis após a solicitação.",
+    },
+    {
+      keywords: ["ajuda", "suporte", "dúvida", "duvida", "problema"],
+      response: "Se você estiver enfrentando dificuldades com os sistemas ou tiver dúvidas sobre os processos de RH, entre em contato pelo e-mail suporte.rh@biomundo.com.br ou ligue para o ramal 2310. O horário de atendimento é das 9h às 18h, de segunda a sexta.",
+    }
+  ];
+
+  for (const intent of intents) {
+    for (const keyword of intent.keywords) {
+      if (msgLower.includes(keyword)) {
+        return intent.response;
+      }
+    }
   }
 
-  if (
-    msgLower.includes("recrutamento") ||
-    msgLower.includes("seleção") ||
-    msgLower.includes("selecao") ||
-    msgLower.includes("vaga") ||
-    msgLower.includes("candidato")
-  ) {
-    return "No sistema de Recrutamento e Seleção você pode abrir novas requisições, acompanhar os processos em andamento e verificar o status dos candidatos. Você também pode acessar o banco de talentos para buscar perfis específicos e configurar os testes técnicos para cada posição.";
-  }
-
-  if (
-    msgLower.includes("folha") ||
-    msgLower.includes("pagamento") ||
-    msgLower.includes("salário") ||
-    msgLower.includes("salario") ||
-    msgLower.includes("holerite")
-  ) {
-    return "O processamento da folha de pagamento é realizado até o dia 25 de cada mês. Você pode acessar o sistema de folha para verificar cálculos, gerar relatórios e emitir holerites. Lembre-se que alterações salariais precisam ser registradas até o dia 20 para serem processadas no mesmo mês.";
-  }
-
-  if (
-    msgLower.includes("benefício") ||
-    msgLower.includes("beneficio") ||
-    msgLower.includes("vale") ||
-    msgLower.includes("plano de saúde") ||
-    msgLower.includes("plano de saude")
-  ) {
-    return "A gestão de benefícios é feita pelo sistema de RH integrado. Nele, você pode cadastrar novos colaboradores, alterar planos, emitir 2ª via de carteiras e gerar relatórios de utilização. Lembre-se que inclusões no plano de saúde devem ser feitas até o dia 15 para vigência no mês seguinte.";
-  }
-
-  if (
-    msgLower.includes("ponto") ||
-    msgLower.includes("frequência") ||
-    msgLower.includes("frequencia") ||
-    msgLower.includes("banco de horas") ||
-    msgLower.includes("hora extra")
-  ) {
-    return "O sistema de controle de ponto está disponível na plataforma de RH. Como administrador, você consegue aprovar ajustes, gerar relatórios de frequência, acompanhar o banco de horas e configurar compensações. O fechamento ocorre no dia 20 de cada mês, após esta data não é possível fazer alterações no período anterior.";
-  }
-
-  if (
-    msgLower.includes("treinamento") ||
-    msgLower.includes("desenvolvimento") ||
-    msgLower.includes("capacitação") ||
-    msgLower.includes("capacitacao") ||
-    msgLower.includes("curso")
-  ) {
-    return "Na plataforma de Treinamento e Desenvolvimento você pode cadastrar novos cursos, gerenciar inscrições, acompanhar a evolução de cada colaborador e gerar certificados. O orçamento anual de T&D é distribuído por trimestre e pode ser consultado no dashboard da área.";
-  }
-
-  if (
-    msgLower.includes("admissão") ||
-    msgLower.includes("admissao") ||
-    msgLower.includes("contratação") ||
-    msgLower.includes("contratacao") ||
-    msgLower.includes("onboarding")
-  ) {
-    return "O processo de admissão é 100% digital. Através do sistema de onboarding, você pode enviar os documentos para assinatura eletrônica, acompanhar o status de cada contratação e configurar o fluxo de integração. Toda admissão deve ser iniciada com pelo menos 5 dias úteis de antecedência para garantir o início sem intercorrências.";
-  }
-
-  if (
-    msgLower.includes("demissão") ||
-    msgLower.includes("demissao") ||
-    msgLower.includes("desligamento") ||
-    msgLower.includes("rescisão") ||
-    msgLower.includes("rescisao")
-  ) {
-    return "Para iniciar um processo de desligamento, utilize o formulário específico no sistema de RH, preenchendo o motivo e coletando as aprovações necessárias. O workflow automatizado irá notificar todas as áreas envolvidas e gerar a documentação para assinatura. Lembre-se de agendar a entrevista de desligamento e solicitar a devolução de equipamentos.";
-  }
-
-  if (
-    msgLower.includes("férias") ||
-    msgLower.includes("ferias") ||
-    msgLower.includes("recesso") ||
-    msgLower.includes("afastamento")
-  ) {
-    return "A programação de férias deve ser registrada no sistema com antecedência mínima de 30 dias. Como administrador de RH, você pode aprovar solicitações, verificar períodos aquisitivos, gerar avisos de férias e controlar o cronograma de ausências por departamento. O módulo também gera automaticamente a projeção da provisão de férias.";
-  }
-
-  if (
-    msgLower.includes("relatório") ||
-    msgLower.includes("relatorio") ||
-    msgLower.includes("indicador") ||
-    msgLower.includes("dashboard") ||
-    msgLower.includes("métrica") ||
-    msgLower.includes("metrica")
-  ) {
-    return "Os relatórios analíticos de RH estão disponíveis no Business Intelligence da plataforma. Você tem acesso a mais de 40 indicadores de gestão de pessoas, incluindo turnover, absenteísmo, custo por contratação e tempo médio de preenchimento de vaga. Os dados são atualizados diariamente e podem ser exportados em diversos formatos.";
-  }
-
-  // Resposta genérica para perguntas não reconhecidas
-  return "Obrigada por sua pergunta. Como assistente especializada em RH da Bio Mundo, posso fornecer informações sobre processos de gestão de pessoas, políticas internas, legislação trabalhista e melhores práticas. Para questões mais específicas sobre algum colaborador ou caso particular, recomendo consultar diretamente o sistema ou entrar em contato com o gerente de RH pelo ramal 2200.";
+  // Resposta genérica padrão
+  return "Obrigada por sua pergunta. Sou a assistente virtual do RH da Bio Mundo. Posso ajudar com dúvidas sobre folha de pagamento, benefícios, recrutamento, avaliações e outros temas de gestão de pessoas. Caso sua dúvida seja específica, envie um e-mail para rh@biomundo.com.br.";
 }

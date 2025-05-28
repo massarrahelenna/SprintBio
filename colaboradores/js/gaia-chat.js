@@ -275,7 +275,7 @@ function gerarRespostaSimulada(mensagem) {
       keywords: ["demissão", "desligamento", "dispensa"],
       response: "O processo de desligamento é conduzido pelo RH com entrevista de saída e acerto de contas conforme CLT.",
     },
-    {
+    { 
       keywords: ["treinamento", "curso", "capacitação", "capacitacao"],
       response: "Temos diversos programas de desenvolvimento. Consulte a área 'Desenvolvimento' no portal do colaborador.",
     },

@@ -176,104 +176,60 @@ function removeTypingIndicator() {
 
 // Função que gera respostas simuladas para o chat - versão para gestores
 function gerarRespostaSimulada(mensagem) {
-  // Converte a mensagem para minúsculas para facilitar a correspondência
   const msgLower = mensagem.toLowerCase();
 
-  // Base de conhecimento para gestores
-  if (
-    msgLower.includes("olá") ||
-    msgLower.includes("oi") ||
-    msgLower.includes("ola") ||
-    msgLower.includes("bom dia") ||
-    msgLower.includes("boa tarde") ||
-    msgLower.includes("boa noite")
-  ) {
-    return "Olá! Como posso auxiliá-lo(a) hoje? Estou aqui para fornecer informações sobre gestão de equipes, indicadores de desempenho e políticas da empresa.";
+  const intents = [
+    {
+      keywords: ["olá", "oi", "ola", "bom dia", "boa tarde", "boa noite"],
+      response: "Olá! Como posso auxiliá-lo(a) hoje? Estou aqui para fornecer informações sobre gestão de equipes, indicadores de desempenho e políticas da empresa.",
+    },
+    {
+      keywords: ["relatório", "relatorio", "dashboard", "indicadores"],
+      response: "Os relatórios de desempenho e dashboards de indicadores estão disponíveis no Portal do Gestor. Você pode filtrar por departamento, período e tipo de KPI. Para análises personalizadas, utilize a função 'Relatórios Customizados' ou entre em contato com o time de Business Intelligence pelo ramal 2301.",
+    },
+    {
+      keywords: ["avaliação", "avaliacao", "desempenho", "feedback"],
+      response: "O ciclo de avaliação de desempenho ocorre trimestralmente. No Portal do Gestor, seção 'Avaliações', você encontra os formulários, cronograma e histórico de feedbacks. Lembre-se que as avaliações devem ser concluídas até o dia 10 do mês seguinte ao término do trimestre.",
+    },
+    {
+      keywords: ["contratação", "contratacao", "recrutar", "vaga"],
+      response: "Para iniciar um processo de contratação, preencha o formulário de requisição de pessoal no Portal do Gestor. O RH irá validar o pedido em até 48h úteis. Após aprovação, você poderá acompanhar todo o processo seletivo, incluindo triagem de currículos e agendamento de entrevistas, pela plataforma.",
+    },
+    {
+      keywords: ["orçamento", "orcamento", "budget", "despesa"],
+      response: "O sistema de gestão orçamentária está disponível na seção 'Financeiro' do Portal do Gestor. Você pode visualizar o orçamento aprovado para seu departamento, acompanhar a execução mensal e solicitar remanejamentos. Lembre-se que qualquer despesa não prevista precisa de aprovação prévia do diretor da área.",
+    },
+    {
+      keywords: ["treinamento", "capacitação", "capacitacao", "equipe", "desenvolvimento"],
+      response: "A Bio Mundo oferece diversos programas de treinamento. Como gestor, você pode inscrever sua equipe nos treinamentos disponíveis ou solicitar capacitações específicas através do módulo 'Desenvolvimento de Pessoas'. A verba para treinamentos externos é aprovada trimestralmente, então planeje com antecedência.",
+    },
+    {
+      keywords: ["reunião", "reuniao", "agenda", "diretoria"],
+      response: "As reuniões de alinhamento de gestão ocorrem todas as segundas-feiras, às 9h, na sala virtual 'Estratégia'. A pauta deve ser compartilhada com antecedência mínima de 24h. Para reuniões extraordinárias com a diretoria, utilize o sistema de agendamento no Portal do Gestor com pelo menos 48h de antecedência.",
+    },
+    {
+      keywords: ["resultado", "meta", "objetivo", "performance"],
+      response: "O acompanhamento de resultados e metas pode ser feito no dashboard em tempo real disponível no Portal do Gestor. As métricas são atualizadas diariamente e os alertas de desvio são enviados automaticamente quando há variação superior a 10% do planejado. Para ajustar metas durante o período, solicite revisão via formulário específico.",
+    },
+    {
+      keywords: ["folga", "ausência", "ausencia", "férias", "ferias"],
+      response: "Como gestor, você deve aprovar as solicitações de folga e férias de sua equipe através do módulo 'Gestão de Pessoas'. Lembre-se de observar o calendário de escalas para garantir cobertura adequada. As solicitações devem ser aprovadas ou rejeitadas em até 48h e as ausências programadas devem ser comunicadas aos demais departamentos envolvidos.",
+    },
+    {
+      keywords: ["produto", "estoque", "lançamento", "lancamento"],
+      response: "Informações detalhadas sobre produtos, estoque e lançamentos estão disponíveis no sistema de gestão comercial. Como gestor, você tem acesso ampliado, podendo visualizar margens, previsões de venda e análises de desempenho por categoria. Para novas estratégias de produto, agende uma reunião com o time de Marketing e Produto via Portal.",
+    }
+  ];
+
+  // Busca por intenção correspondente
+  for (const intent of intents) {
+    for (const keyword of intent.keywords) {
+      if (msgLower.includes(keyword)) {
+        return intent.response;
+      }
+    }
   }
 
-  if (
-    msgLower.includes("relatório") ||
-    msgLower.includes("relatorio") ||
-    msgLower.includes("dashboard") ||
-    msgLower.includes("indicadores")
-  ) {
-    return "Os relatórios de desempenho e dashboards de indicadores estão disponíveis no Portal do Gestor. Você pode filtrar por departamento, período e tipo de KPI. Para análises personalizadas, utilize a função 'Relatórios Customizados' ou entre em contato com o time de Business Intelligence pelo ramal 2301.";
-  }
-
-  if (
-    msgLower.includes("avaliação") ||
-    msgLower.includes("avaliacao") ||
-    msgLower.includes("desempenho") ||
-    msgLower.includes("feedback")
-  ) {
-    return "O ciclo de avaliação de desempenho ocorre trimestralmente. No Portal do Gestor, seção 'Avaliações', você encontra os formulários, cronograma e histórico de feedbacks. Lembre-se que as avaliações devem ser concluídas até o dia 10 do mês seguinte ao término do trimestre.";
-  }
-
-  if (
-    msgLower.includes("contratação") ||
-    msgLower.includes("contratacao") ||
-    msgLower.includes("recrutar") ||
-    msgLower.includes("vaga")
-  ) {
-    return "Para iniciar um processo de contratação, preencha o formulário de requisição de pessoal no Portal do Gestor. O RH irá validar o pedido em até 48h úteis. Após aprovação, você poderá acompanhar todo o processo seletivo, incluindo triagem de currículos e agendamento de entrevistas, pela plataforma.";
-  }
-
-  if (
-    msgLower.includes("orçamento") ||
-    msgLower.includes("orcamento") ||
-    msgLower.includes("budget") ||
-    msgLower.includes("despesa")
-  ) {
-    return "O sistema de gestão orçamentária está disponível na seção 'Financeiro' do Portal do Gestor. Você pode visualizar o orçamento aprovado para seu departamento, acompanhar a execução mensal e solicitar remanejamentos. Lembre-se que qualquer despesa não prevista precisa de aprovação prévia do diretor da área.";
-  }
-
-  if (
-    msgLower.includes("treinamento") ||
-    msgLower.includes("capacitação") ||
-    msgLower.includes("capacitacao") ||
-    msgLower.includes("equipe") ||
-    msgLower.includes("desenvolvimento")
-  ) {
-    return "A Bio Mundo oferece diversos programas de treinamento. Como gestor, você pode inscrever sua equipe nos treinamentos disponíveis ou solicitar capacitações específicas através do módulo 'Desenvolvimento de Pessoas'. A verba para treinamentos externos é aprovada trimestralmente, então planeje com antecedência.";
-  }
-
-  if (
-    msgLower.includes("reunião") ||
-    msgLower.includes("reuniao") ||
-    msgLower.includes("agenda") ||
-    msgLower.includes("diretoria")
-  ) {
-    return "As reuniões de alinhamento de gestão ocorrem todas as segundas-feiras, às 9h, na sala virtual 'Estratégia'. A pauta deve ser compartilhada com antecedência mínima de 24h. Para reuniões extraordinárias com a diretoria, utilize o sistema de agendamento no Portal do Gestor com pelo menos 48h de antecedência.";
-  }
-
-  if (
-    msgLower.includes("resultado") ||
-    msgLower.includes("meta") ||
-    msgLower.includes("objetivo") ||
-    msgLower.includes("performance")
-  ) {
-    return "O acompanhamento de resultados e metas pode ser feito no dashboard em tempo real disponível no Portal do Gestor. As métricas são atualizadas diariamente e os alertas de desvio são enviados automaticamente quando há variação superior a 10% do planejado. Para ajustar metas durante o período, solicite revisão via formulário específico.";
-  }
-
-  if (
-    msgLower.includes("folga") ||
-    msgLower.includes("ausência") ||
-    msgLower.includes("ausencia") ||
-    msgLower.includes("férias") ||
-    msgLower.includes("ferias")
-  ) {
-    return "Como gestor, você deve aprovar as solicitações de folga e férias de sua equipe através do módulo 'Gestão de Pessoas'. Lembre-se de observar o calendário de escalas para garantir cobertura adequada. As solicitações devem ser aprovadas ou rejeitadas em até 48h e as ausências programadas devem ser comunicadas aos demais departamentos envolvidos.";
-  }
-
-  if (
-    msgLower.includes("produto") ||
-    msgLower.includes("estoque") ||
-    msgLower.includes("lançamento") ||
-    msgLower.includes("lancamento")
-  ) {
-    return "Informações detalhadas sobre produtos, estoque e lançamentos estão disponíveis no sistema de gestão comercial. Como gestor, você tem acesso ampliado, podendo visualizar margens, previsões de venda e análises de desempenho por categoria. Para novas estratégias de produto, agende uma reunião com o time de Marketing e Produto via Portal.";
-  }
-
-  // Resposta genérica para perguntas não reconhecidas
-  return "Obrigada por sua pergunta. Como assistente dos gestores da Bio Mundo, posso fornecer informações sobre gestão de equipes, indicadores de desempenho, processos administrativos e estratégias de negócio. Se sua dúvida for específica, considere agendar uma reunião com o time de apoio à gestão pelo e-mail apoiogestao@biomundo.com.br ou ramal 2300.";
+  // Resposta genérica padrão
+  return "Desculpe, não entendi bem sua pergunta. Você pode reformular ou perguntar sobre benefícios, férias, salários ou treinamentos?";
 }
