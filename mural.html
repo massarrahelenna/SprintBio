@@ -1,0 +1,228 @@
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mural de Reconhecimento</title>
+
+    <!-- Fonte Roboto e Ícones Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+      :root {
+        --primary: #006633;
+        --secondary: #f8a100;
+        --bg: #f4f4f4;
+        --white: #ffffff;
+        --border: #e0e0e0;
+        --like: #e74c3c;
+        --text: #333;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--primary);
+      }
+
+      .post {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: transform 0.2s;
+      }
+
+      .post:hover {
+        transform: scale(1.01);
+      }
+
+      .post-header {
+        padding: 1rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--primary);
+        border-bottom: 1px solid var(--border);
+        background: #f0fdf6;
+      }
+
+      .post-img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .post-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 1rem;
+        background: #fafafa;
+        border-top: 1px solid var(--border);
+      }
+
+      .like-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--like);
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .like-btn:hover {
+        transform: scale(1.2);
+      }
+
+      .like-count {
+        font-weight: bold;
+        color: var(--text);
+      }
+
+      .caption {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        background: #fdfdfd;
+      }
+
+      .comments-list {
+        max-height: 120px;
+        overflow-y: auto;
+        list-style: none;
+        padding: 0.5rem 1rem;
+      }
+
+      .comments-list li {
+        background-color: #eff8f1;
+        padding: 0.5rem;
+        margin-bottom: 0.4rem;
+        border-radius: 5px;
+      }
+
+      .comment-form {
+        display: flex;
+        padding: 1rem;
+        border-top: 1px solid var(--border);
+        background: #f9f9f9;
+      }
+
+      .comment-form input {
+        flex: 1;
+        padding: 0.5rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        margin-right: 0.5rem;
+      }
+
+      .comment-form button {
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .comment-form button:hover {
+        background: #004d26;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <h2>Mural de Reconhecimento</h2>
+
+      <!-- Post Template -->
+      <div class="post">
+        <div class="post-header">1º Lugar - Bio Shopping DF Plaza</div>
+        <img src="../assets/images/equipe-1.jpg" alt="Equipe 1º Lugar" class="post-img">
+        <div class="post-actions">
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+          <span class="like-count">0 curtidas</span>
+        </div>
+        <div class="caption">Parabéns à equipe campeã!</div>
+        <ul class="comments-list"></ul>
+        <form class="comment-form">
+          <input type="text" placeholder="Adicione um comentário..." required>
+          <button type="submit">Postar</button>
+        </form>
+      </div>
+
+      <div class="post">
+        <div class="post-header">2º Lugar - Bio Sams Club Águas Claras</div>
+        <img src="../assets/images/equipe-2.jpg" alt="Equipe 2º Lugar" class="post-img">
+        <div class="post-actions">
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+          <span class="like-count">0 curtidas</span>
+        </div>
+        <div class="caption">Incrível resultado da equipe!</div>
+        <ul class="comments-list"></ul>
+        <form class="comment-form">
+          <input type="text" placeholder="Adicione um comentário..." required>
+          <button type="submit">Postar</button>
+        </form>
+      </div>
+
+      <div class="post">
+        <div class="post-header">3º Lugar - Bio Araucárias</div>
+        <img src="../assets/images/equipe-3.jpg" alt="Equipe 3º Lugar" class="post-img">
+        <div class="post-actions">
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+          <span class="like-count">0 curtidas</span>
+        </div>
+        <div class="caption">Equipe determinada e dedicada!</div>
+        <ul class="comments-list"></ul>
+        <form class="comment-form">
+          <input type="text" placeholder="Adicione um comentário..." required>
+          <button type="submit">Postar</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const countSpan = button.nextElementSibling;
+          let count = parseInt(countSpan.textContent) || 0;
+          count++;
+          countSpan.textContent = `${count} curtidas`;
+        });
+      });
+
+      document.querySelectorAll('.comment-form').forEach(form => {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          const input = form.querySelector('input');
+          const commentList = form.parentElement.querySelector('.comments-list');
+          const li = document.createElement('li');
+          li.textContent = input.value;
+          commentList.appendChild(li);
+          input.value = '';
+        });
+      });
+    </script>
+  </body>
+  </html>
