@@ -38,6 +38,32 @@
           <div class="logo">
             <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
           </div>
+          <!--Melhorando a centralização do nav-bar-->
+          <style>
+            .header-container {
+              display: flex;
+              align-items: center;
+              justify-content: space-between; /* espaça logo, menu e botão "Sair" */
+              padding: 0;
+            }
+
+            .logo {
+              margin-right: auto; /* força a logo a ficar colada na esquerda */
+            }
+
+            .main-nav {
+              flex: 1;
+              margin-left: 2rem; /* espaço entre logo e navegação */
+            }
+
+            .logout-btn {
+              margin-left: auto;
+              color: white;
+              text-decoration: none;
+              font-weight: bold;
+            }
+
+          </style>
           <nav class="main-nav">
             <div class="nav-container">
               <ul class="nav-tabs">
@@ -84,40 +110,196 @@
     <main>
       <div class="container">
         <!-- Aba MURAL -->
-        <div id="mural" class="tab-content tab-pane active">
-          <h2>Mural de Reconhecimento</h2>
+<div id="mural" class="tab-content tab-pane active">
+  <h2>Mural de Reconhecimento</h2>
 
-          <div class="card">
-            <h3>Equipes Ganhadoras - Prêmios de Gestão de Pessoas</h3>
-            <div class="gallery">
-              <div class="gallery-item">
-                <img
-                  src="../assets/images/equipe-1.jpg"
-                  alt="Equipe 1º Lugar"
-                />
-                <div class="gallery-caption">
-                  1º Lugar - Bio Shopping DF Plaza
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img
-                  src="../assets/images/equipe-2.jpg"
-                  alt="Equipe 2º Lugar"
-                />
-                <div class="gallery-caption">
-                  2º Lugar - Bio Sams Club Águas Claras
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img
-                  src="../assets/images/equipe-3.jpg"
-                  alt="Equipe 3º Lugar"
-                />
-                <div class="gallery-caption">3º Lugar - Bio Araucárias</div>
-              </div>
-            </div>
-          </div>
-        </div>  
+  <div class="feed">
+    <!-- Post 1 -->
+    <div class="post">
+      <div class="post-header">1º Lugar - Bio Shopping DF Plaza</div>
+      <img src="../assets/images/equipe-1.jpg" alt="Equipe 1º Lugar" class="post-img" />
+      <div class="caption">Parabéns à equipe campeã!</div>
+      <div class="post-actions">
+        <button class="like-btn"><i class="fas fa-heart"></i></button>
+        <span class="like-count">0 curtidas</span>
+      </div>
+      <ul class="comments-list"></ul>
+      <form class="comment-form">
+        <input type="text" placeholder="Adicione um comentário..." required />
+        <button type="submit">Postar</button>
+      </form>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="post">
+      <div class="post-header">2º Lugar - Bio Sams Club Águas Claras</div>
+      <img src="../assets/images/equipe-2.jpg" alt="Equipe 2º Lugar" class="post-img" />
+      <div class="caption">Incrível resultado da equipe!</div>
+      <div class="post-actions">
+        <button class="like-btn"><i class="fas fa-heart"></i></button>
+        <span class="like-count">0 curtidas</span>
+      </div>
+      <ul class="comments-list"></ul>
+      <form class="comment-form">
+        <input type="text" placeholder="Adicione um comentário..." required />
+        <button type="submit">Postar</button>
+      </form>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="post">
+      <div class="post-header">3º Lugar - Bio Araucárias</div>
+      <img src="../assets/images/equipe-3.jpg" alt="Equipe 3º Lugar" class="post-img" />
+      <div class="caption">Equipe determinada e dedicada!</div>
+      <div class="post-actions">
+        <button class="like-btn"><i class="fas fa-heart"></i></button>
+        <span class="like-count">0 curtidas</span>
+      </div>
+      <ul class="comments-list"></ul>
+      <form class="comment-form">
+        <input type="text" placeholder="Adicione um comentário..." required />
+        <button type="submit">Postar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--css do "insta" do mural-->
+<style>
+  .feed {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.post {
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
+}
+
+.post-header {
+  padding: 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  color: #262626;
+}
+
+.post-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #ed4956;
+  cursor: pointer;
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+}
+
+.like-count {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: #262626;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0.5rem 1rem;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.comments-list li {
+  background: #f4f4f4;
+  margin-bottom: 4px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.comment-form {
+  display: flex;
+  padding: 0.8rem 1rem;
+  border-top: 1px solid #eee;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form button {
+  background: #006633;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background: #004d26;
+}
+
+</style>
+<!--lógica da curtida do mural -->
+<script>
+  document.querySelectorAll('.like-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      if (button.classList.contains('liked')) {
+        // Se já curtiu, ignora o clique
+        alert('Você já curtiu este post!');
+        return;
+      }
+
+      const countSpan = button.nextElementSibling;
+      let count = parseInt(countSpan.textContent) || 0;
+      count++;
+      countSpan.textContent = `${count} curtidas`;
+      button.classList.add('liked'); // Marca que o usuário já curtiu
+      button.style.color = '#ed4956'; // Opcional: muda cor após curtir
+    });
+  });
+
+  document.querySelectorAll('.comment-form').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const input = form.querySelector('input');
+      const commentList = form.parentElement.querySelector('.comments-list');
+      const li = document.createElement('li');
+      li.textContent = input.value;
+      commentList.appendChild(li);
+      input.value = '';
+    });
+  });
+</script>
+
+
 
         <!-- Aba GESTÃO DE CADASTROS -->
         <div id="gestao-cadastros" class="tab-content tab-pane">
