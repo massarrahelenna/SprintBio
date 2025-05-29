@@ -43,7 +43,7 @@
                 Portal exclusivo para colaboradores da Biomundo. Acesse
                 informações sobre sua carreira, pesquisas de clima e muito mais.
               </p>
-              <a href="colaboradores/index.html" class="btn">Acessar</a>
+              <a href="login.html" class="btn" onclick="selecionarPortal('colaboradores')">Login</a>
             </div>
 
             <div class="site-option">
@@ -53,7 +53,7 @@
                 Portal para franqueados, gestores e gerentes. Gerencie
                 cadastros, monitore o clima organizacional e acesse manuais.
               </p>
-              <a href="gestores/index.html" class="btn">Acessar</a>
+              <a href="login.html" class="btn" onclick="selecionarPortal('gestores')">Login</a>
             </div>
 
             <div class="site-option">
@@ -63,7 +63,7 @@
                 Portal exclusivo para o RH. Gerencie cadastros, monitore
                 pesquisas de clima e acompanhe requerimentos.
               </p>
-              <a href="rh/index.html" class="btn">Acessar</a>
+              <a href="login.html" class="btn" onclick="selecionarPortal('rh')">Login</a> 
             </div>
           </div>
         </div>
@@ -85,7 +85,11 @@
         </div>
       </div>
     </footer>
-
+    <script>
+      function selecionarPortal(portal) {
+    localStorage.setItem('portalSelecionado', portal);
+        }
+    </script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
