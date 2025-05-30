@@ -36,7 +36,24 @@
       <div class="header-top">
         <div class="header-container">
           <div class="logo">
-            <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+           <a href="#" onclick="showTab('mural')">
+             <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+            </a>
+
+            <script>
+              function showTab(id) {
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                  tab.classList.remove('active');
+                });
+
+                const tabToShow = document.getElementById(id);
+                if (tabToShow) {
+                  tabToShow.classList.add('active');
+                  tabToShow.scrollIntoView({ behavior: 'smooth' });
+                }
+              }
+            </script>
+
           </div>
           <!--NavBar e Menu-->
           <nav class="main-nav">
@@ -1307,6 +1324,10 @@
             </div>
 
             <div class="gallery" style="margin-top: 20px">
+              <div class="gallery-item" data-campanha="maio2025">
+                <img src="../assets/images/campanhas/camapanha-sustentavel2.png" alt="Campanha Biomundo Centro" />
+                <div class="gallery-caption">Bio Shopping DF Plaza</div>
+              </div>
 
               <div class="gallery-item" data-campanha="maio2025">
                 <img src="../assets/images/campanhas/campanha-sustentavel.png" alt="Campanha Biomundo Norte" />
@@ -1315,6 +1336,11 @@
 
               <div class="gallery-item" data-campanha="abril2025">
                 <img src="../assets/images/campanhas/campanha-endomarketing.png" alt="Campanha Biomundo Sul" />
+                <div class="gallery-caption">Bio Araucárias</div>
+              </div>
+
+              <div class="gallery-item" data-campanha="abril2025">
+                <img src="../assets/images/campanhas/campanha-saude.png" alt="Campanha Biomundo Oeste" />
                 <div class="gallery-caption">Bio Araucárias</div>
               </div>
 
