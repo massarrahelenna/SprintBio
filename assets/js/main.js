@@ -274,3 +274,25 @@ window.addEventListener("resize", function () {
     }
   }
 });
+
+
+//tabelas rh
+  document.addEventListener("DOMContentLoaded", function () {
+    const filtro = document.getElementById("filtroCampanha");
+    const itens = document.querySelectorAll(".gallery-item");
+
+    function filtrarGaleria(campanha) {
+      itens.forEach(item => {
+        const pertence = item.getAttribute("data-campanha") === campanha;
+        item.style.display = pertence ? "block" : "none";
+      });
+    }
+
+    // Filtra ao mudar o select
+    filtro.addEventListener("change", () => {
+      filtrarGaleria(filtro.value);
+    });
+
+    // Filtra ao carregar a página com o valor inicial
+    filtrarGaleria(filtro.value);
+  });
