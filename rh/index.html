@@ -1448,7 +1448,20 @@
             <div style="margin-top: 20px">
               <h4>Status de Participação</h4>
               <div class="chart-container">
-                <canvas id="participacaoChart"></canvas>
+                <div style="margin-top: 20px">
+                  <h4>Status de Participação</h4>
+
+                  <table id="participacaoTable" class="tabela-participacao">
+                    <thead>
+                      <tr>
+                        <th>Franquia</th>
+                        <th>Participação</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+
               </div>
             </div>
           </div>
@@ -1586,287 +1599,236 @@
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Inicializa os gráficos
-        initializeRHCharts();
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeRHCharts(dadosRH);
       });
 
-      // Função para inicializar os gráficos da área de RH
-      function initializeRHCharts() {
-        // Gráfico de Satisfação por Franquia
-        const satisfacaoRedeCtx = document.getElementById(
-          "satisfacaoRedeChart"
-        );
-        if (satisfacaoRedeCtx) {
-          new Chart(satisfacaoRedeCtx, {
+      function initializeRHCharts(data) {
+        const verde = "rgba(0, 102, 51, 1)";
+        const verdeClaro = "rgba(0, 102, 51, 0.7)";
+        const verdeClaro2 = "rgba(0, 153, 76, 0.7)";
+        const laranja = "rgba(248, 161, 0, 0.7)";
+        const laranjaBorda = "rgba(248, 161, 0, 1)";
+        const vermelho = "rgba(220, 53, 69, 0.7)";
+        const vermelhoBorda = "rgba(220, 53, 69, 1)";
+        const salmao = "rgba(255, 99, 71, 0.7)";
+        const salmaoBorda = "rgba(255, 99, 71, 1)";
+
+        const nomes = data.franquias.map(f => f.nome);
+        const satisfacoes = data.franquias.map(f => f.satisfacao);
+        const participacoes = data.franquias.map(f => f.participou ? 1 : 0);
+
+        // Satisfação por franquia
+        const ctxSatisfacao = document.getElementById("satisfacaoRedeChart");
+        if (ctxSatisfacao) {
+          new Chart(ctxSatisfacao, {
             type: "bar",
             data: {
-              labels: [
-                "Bio Shopping DF Plaza",
-                "Bio Sams Club Águas Claras",
-                "Bio Araucárias",
-                "Bio Castanheiras",
-                "Bio Águas Claras Shopping",
-              ],
-              datasets: [
-                {
-                  label: "Índice de Satisfação (%)",
-                  data: [85, 78, 72, 80, 75],
-                  backgroundColor: [
-                    "rgba(0, 102, 51, 0.7)",
-                    "rgba(0, 102, 51, 0.7)",
-                    "rgba(0, 102, 51, 0.7)",
-                    "rgba(0, 102, 51, 0.7)",
-                    "rgba(0, 102, 51, 0.7)",
-                  ],
-                  borderColor: [
-                    "rgba(0, 102, 51, 1)",
-                    "rgba(0, 102, 51, 1)",
-                    "rgba(0, 102, 51, 1)",
-                    "rgba(0, 102, 51, 1)",
-                    "rgba(0, 102, 51, 1)",
-                  ],
-                  borderWidth: 1,
-                },
-              ],
+              labels: nomes,
+              datasets: [{
+                label: "Índice de Satisfação (%)",
+                data: satisfacoes,
+                backgroundColor: verdeClaro,
+                borderColor: verde,
+                borderWidth: 1,
+              }]
             },
             options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  max: 100,
-                },
-              },
-              responsive: true,
-            },
+              scales: { y: { beginAtZero: true, max: 100 } },
+              responsive: true
+            }
           });
         }
 
-        // Gráfico de Engajamento Médio
-        const engajamentoRedeCtx = document.getElementById(
-          "engajamentoRedeChart"
-        );
-        if (engajamentoRedeCtx) {
-          new Chart(engajamentoRedeCtx, {
+        // Engajamento Médio
+        const ctxEngajamento = document.getElementById("engajamentoRedeChart");
+        if (ctxEngajamento) {
+          new Chart(ctxEngajamento, {
             type: "doughnut",
             data: {
               labels: ["Alto", "Médio", "Baixo"],
-              datasets: [
-                {
-                  data: [60, 30, 10],
-                  backgroundColor: [
-                    "rgba(0, 102, 51, 0.7)",
-                    "rgba(248, 161, 0, 0.7)",
-                    "rgba(220, 53, 69, 0.7)",
-                  ],
-                  borderColor: [
-                    "rgba(0, 102, 51, 1)",
-                    "rgba(248, 161, 0, 1)",
-                    "rgba(220, 53, 69, 1)",
-                  ],
-                  borderWidth: 1,
-                },
-              ],
+              datasets: [{
+                data: data.engajamentoDistribuido,
+                backgroundColor: [verdeClaro, laranja, vermelho],
+                borderColor: [verde, laranjaBorda, vermelhoBorda],
+                borderWidth: 1
+              }]
             },
-            options: {
-              responsive: true,
-            },
+            options: { responsive: true }
           });
         }
 
-        // Gráfico de Avaliação de Liderança
-        const liderancaRedeCtx = document.getElementById("liderancaRedeChart");
-        if (liderancaRedeCtx) {
-          new Chart(liderancaRedeCtx, {
+        // Radar de liderança
+        const ctxRadar = document.getElementById("liderancaRedeChart");
+        if (ctxRadar) {
+          new Chart(ctxRadar, {
             type: "radar",
             data: {
-              labels: [
-                "Comunicação",
-                "Suporte",
-                "Reconhecimento",
-                "Desenvolvimento",
-                "Feedback",
-              ],
-              datasets: [
-                {
-                  label: "Média da Rede",
-                  data: [75, 78, 70, 72, 76],
-                  backgroundColor: "rgba(0, 102, 51, 0.2)",
-                  borderColor: "rgba(0, 102, 51, 1)",
-                  borderWidth: 2,
-                  pointBackgroundColor: "rgba(0, 102, 51, 1)",
-                },
-              ],
+              labels: ["Comunicação", "Suporte", "Reconhecimento", "Desenvolvimento", "Feedback"],
+              datasets: [{
+                label: "Média da Rede",
+                data: data.avaliacaoLiderancaMedia,
+                backgroundColor: "rgba(0, 102, 51, 0.2)",
+                borderColor: verde,
+                borderWidth: 2,
+                pointBackgroundColor: verde
+              }]
             },
             options: {
-              scales: {
-                r: {
-                  beginAtZero: true,
-                  max: 100,
-                },
-              },
-              responsive: true,
-            },
+              scales: { r: { beginAtZero: true, max: 100 } },
+              responsive: true
+            }
           });
         }
 
-        // Gráfico de Clima por Franquia
-        const climaFranquiaCtx = document.getElementById("climaFranquiaChart");
-        if (climaFranquiaCtx) {
-          new Chart(climaFranquiaCtx, {
+        // Clima por primeira franquia (exemplo)
+        const ctxClima = document.getElementById("climaFranquiaChart");
+        if (ctxClima) {
+          const f = data.franquias[0]; // exemplo com 1 franquia
+          new Chart(ctxClima, {
             type: "bar",
             data: {
-              labels: [
-                "Satisfação",
-                "Engajamento",
-                "Comunicação",
-                "Liderança",
-                "Ambiente",
-              ],
-              datasets: [
-                {
-                  label: "Bio Shopping DF Plaza",
-                  data: [85, 82, 78, 80, 88],
-                  backgroundColor: "rgba(0, 102, 51, 0.7)",
-                  borderColor: "rgba(0, 102, 51, 1)",
-                  borderWidth: 1,
-                },
-              ],
+              labels: ["Satisfação", "Engajamento", "Comunicação", "Liderança", "Ambiente"],
+              datasets: [{
+                label: f.nome,
+                data: [f.satisfacao, f.engajamento, f.comunicacao, f.lideranca, f.ambiente],
+                backgroundColor: verdeClaro,
+                borderColor: verde,
+                borderWidth: 1
+              }]
             },
             options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  max: 100,
-                },
-              },
-              responsive: true,
-            },
+              scales: { y: { beginAtZero: true, max: 100 } },
+              responsive: true
+            }
           });
         }
 
-        // Gráfico de Distribuição de Respostas
-        const distribuicaoRespostasCtx = document.getElementById(
-          "distribuicaoRespostasChart"
-        );
-        if (distribuicaoRespostasCtx) {
-          new Chart(distribuicaoRespostasCtx, {
+        // Distribuição de respostas
+        const ctxDistribuicao = document.getElementById("distribuicaoRespostasChart");
+        if (ctxDistribuicao) {
+          new Chart(ctxDistribuicao, {
             type: "pie",
             data: {
-              labels: [
-                "Muito Satisfeito",
-                "Satisfeito",
-                "Neutro",
-                "Insatisfeito",
-                "Muito Insatisfeito",
-              ],
-              datasets: [
-                {
-                  data: [40, 35, 15, 7, 3],
-                  backgroundColor: [
-                    "rgba(0, 102, 51, 0.7)",
-                    "rgba(0, 153, 76, 0.7)",
-                    "rgba(248, 161, 0, 0.7)",
-                    "rgba(255, 99, 71, 0.7)",
-                    "rgba(220, 53, 69, 0.7)",
-                  ],
-                  borderColor: [
-                    "rgba(0, 102, 51, 1)",
-                    "rgba(0, 153, 76, 1)",
-                    "rgba(248, 161, 0, 1)",
-                    "rgba(255, 99, 71, 1)",
-                    "rgba(220, 53, 69, 1)",
-                  ],
-                  borderWidth: 1,
-                },
-              ],
+              labels: ["Muito Satisfeito", "Satisfeito", "Neutro", "Insatisfeito", "Muito Insatisfeito"],
+              datasets: [{
+                data: data.distribuicaoRespostas,
+                backgroundColor: [verdeClaro, verdeClaro2, laranja, salmao, vermelho],
+                borderColor: [verde, "rgba(0,153,76,1)", laranjaBorda, salmaoBorda, vermelhoBorda],
+                borderWidth: 1
+              }]
             },
-            options: {
-              responsive: true,
-            },
+            options: { responsive: true }
           });
         }
 
-        // Gráfico de Evolução Temporal
-        const evolucaoTemporalCtx = document.getElementById(
-          "evolucaoTemporalChart"
-        );
-        if (evolucaoTemporalCtx) {
-          new Chart(evolucaoTemporalCtx, {
+        // Evolução Temporal
+        const ctxEvolucao = document.getElementById("evolucaoTemporalChart");
+        if (ctxEvolucao) {
+          new Chart(ctxEvolucao, {
             type: "line",
             data: {
-              labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
-              datasets: [
-                {
-                  label: "Índice de Satisfação",
-                  data: [75, 78, 80, 82, 85],
-                  backgroundColor: "rgba(0, 102, 51, 0.2)",
-                  borderColor: "rgba(0, 102, 51, 1)",
-                  borderWidth: 2,
-                  tension: 0.3,
-                },
-              ],
+              labels: data.evolucaoMensal.meses,
+              datasets: [{
+                label: "Índice de Satisfação",
+                data: data.evolucaoMensal.satisfacao,
+                backgroundColor: "rgba(0, 102, 51, 0.2)",
+                borderColor: verde,
+                borderWidth: 2,
+                tension: 0.3
+              }]
             },
             options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  max: 100,
-                },
-              },
-              responsive: true,
-            },
+              scales: { y: { beginAtZero: true, max: 100 } },
+              responsive: true
+            }
           });
         }
 
-        // Gráfico de Participação nas Campanhas
-        const participacaoCtx = document.getElementById("participacaoChart");
-        if (participacaoCtx) {
-          new Chart(participacaoCtx, {
-            type: "bar",
-            data: {
-              labels: [
-                "Bio Shopping DF Plaza",
-                "Bio Sams Club Águas Claras",
-                "Bio Araucárias",
-                "Bio Castanheiras",
-                "Bio Águas Claras Shopping",
-              ],
-              datasets: [
-                {
-                  label: "Participou",
-                  data: [1, 1, 1, 1, 0],
-                  backgroundColor: "rgba(0, 102, 51, 0.7)",
-                  borderColor: "rgba(0, 102, 51, 1)",
-                  borderWidth: 1,
-                },
-                {
-                  label: "Não Participou",
-                  data: [0, 0, 0, 0, 1],
-                  backgroundColor: "rgba(220, 53, 69, 0.7)",
-                  borderColor: "rgba(220, 53, 69, 1)",
-                  borderWidth: 1,
-                },
-              ],
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  max: 1,
-                  ticks: {
-                    callback: function (value) {
-                      return value === 1 ? "Sim" : "Não";
-                    },
-                  },
-                },
-              },
-              responsive: true,
-            },
-          });
-        }
+        // Participação (tabela)
+        gerarTabelaParticipacao(data.franquias);
       }
+
+      function gerarTabelaParticipacao(franquias) {
+        const tableBody = document.querySelector("#participacaoTable tbody");
+        if (!tableBody) return;
+
+        tableBody.innerHTML = "";
+        franquias.forEach(franquia => {
+          const row = document.createElement("tr");
+
+          const nomeCell = document.createElement("td");
+          nomeCell.textContent = franquia.nome;
+
+          const statusCell = document.createElement("td");
+          statusCell.textContent = franquia.participou ? "Participou" : "Não participou";
+          statusCell.className = franquia.participou ? "participou" : "nao-participou";
+
+          row.appendChild(nomeCell);
+          row.appendChild(statusCell);
+          tableBody.appendChild(row);
+        });
+      }
+
+      // JSON de exemplo — em produção viria de uma API/backend
+      const dadosRH = {
+        franquias: [
+          {
+            nome: "Bio Shopping DF Plaza",
+            satisfacao: 85,
+            engajamento: 82,
+            comunicacao: 78,
+            lideranca: 80,
+            ambiente: 88,
+            participou: true
+          },
+          {
+            nome: "Bio Sams Club Águas Claras",
+            satisfacao: 78,
+            engajamento: 75,
+            comunicacao: 72,
+            lideranca: 76,
+            ambiente: 81,
+            participou: true
+          },
+          {
+            nome: "Bio Araucárias",
+            satisfacao: 72,
+            engajamento: 70,
+            comunicacao: 65,
+            lideranca: 68,
+            ambiente: 74,
+            participou: true
+          },
+          {
+            nome: "Bio Castanheiras",
+            satisfacao: 80,
+            engajamento: 79,
+            comunicacao: 75,
+            lideranca: 77,
+            ambiente: 83,
+            participou: true
+          },
+          {
+            nome: "Bio Águas Claras Shopping",
+            satisfacao: 75,
+            engajamento: 70,
+            comunicacao: 68,
+            lideranca: 71,
+            ambiente: 76,
+            participou: false
+          }
+        ],
+        engajamentoDistribuido: [60, 30, 10],
+        avaliacaoLiderancaMedia: [75, 78, 70, 72, 76],
+        distribuicaoRespostas: [40, 35, 15, 7, 3],
+        evolucaoMensal: {
+          meses: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+          satisfacao: [75, 78, 80, 82, 85]
+        }
+      };
     </script>
+
     <script>
       // Script para garantir que o botão e o container do chat sejam criados
       document.addEventListener("DOMContentLoaded", function () {
