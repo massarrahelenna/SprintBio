@@ -28,6 +28,7 @@
           <div class="logo">
             <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
           </div>
+          <!--NavBar e Menu-->
           <nav class="main-nav">
             <div class="nav-container">
               <ul class="nav-tabs">
@@ -117,119 +118,17 @@
         <div class="gallery-caption">Campanha Sustentabilidade - Bio Shopping DF Plaza</div>
       </div>
       <div class="gallery-item">
-        <img src="../assets/images/campanha-placeholder.jpg" alt="Espaço para Campanha" />
+        <img src="../assets/images/campanhas/campanha-leste.jpeg" alt="Espaço para Campanha" />
         <div class="gallery-caption">Espaço para novas campanhas</div>
       </div>
       <div class="gallery-item">
-        <img src="../assets/images/campanha-placeholder.jpg" alt="Espaço para Campanha" />
+        <img src="../assets/images/campanhas/campanha-sul.png" alt="Espaço para Campanha" />
         <div class="gallery-caption">Espaço para novas campanhas</div>
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .feed {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.post {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
-}
-
-.post-header {
-  padding: 1rem;
-  font-weight: bold;
-  border-bottom: 1px solid #eee;
-  color: #262626;
-}
-
-.post-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.caption {
-  padding: 0.8rem 1rem;
-  font-size: 0.95rem;
-  color: #333;
-  border-bottom: 1px solid #eee;
-}
-
-.post-actions {
-  display: flex;
-  align-items: center;
-  padding: 0.6rem 1rem;
-}
-
-.like-btn {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  color: #ed4956;
-  cursor: pointer;
-}
-
-.like-btn:hover {
-  transform: scale(1.1);
-}
-
-.like-count {
-  margin-left: 0.5rem;
-  font-size: 0.9rem;
-  color: #262626;
-}
-
-.comments-list {
-  list-style: none;
-  padding: 0.5rem 1rem;
-  max-height: 100px;
-  overflow-y: auto;
-}
-
-.comments-list li {
-  background: #f4f4f4;
-  margin-bottom: 4px;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-.comment-form {
-  display: flex;
-  padding: 0.8rem 1rem;
-  border-top: 1px solid #eee;
-}
-
-.comment-form input {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.comment-form button {
-  background: #006633;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin-left: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.comment-form button:hover {
-  background: #004d26;
-}
-
+<!--JavaScript do FEED-->
 </style>
 <!--lógica da curtida do mural -->
 <script>
@@ -376,36 +275,7 @@
             </p>
 
             <form>
-              <style>
-                .form-group {
-                  margin-bottom: 20px;
-                }
-
-                .rating {
-                  display: flex;
-                  gap: 10px;
-                  align-items: center;
-                  margin-top: 8px;
-                }
-
-                .rating input[type="radio"] {
-                  display: none;
-                }
-
-                .rating label {
-                  padding: 8px 12px;
-                  background-color: #eee;
-                  border: 1px solid #ccc;
-                  border-radius: 5px;
-                  cursor: pointer;
-                }
-
-                .rating input[type="radio"]:checked + label {
-                  background-color: #007bff;
-                  color: white;
-                  border-color: #007bff;
-                }
-              </style>
+              
               <div class="form-group">
                 <label
                   >1. Como você avalia o ambiente de trabalho na sua

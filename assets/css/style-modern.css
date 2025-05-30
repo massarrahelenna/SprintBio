@@ -67,48 +67,47 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  padding: 0 8%;
-  max-width: 1400px;
-  margin: 0 auto;
+  justify-content: center; /* centraliza os itens no container */
+  padding: 10px;
+  gap: 2rem; /* espaço entre logo, menu e botão sair */
+  position: relative; /* para posicionar logout depois */
 }
 
+/* Logo com margem à direita para separar do menu */
 .logo {
-  display: flex;
-  align-items: center;
-  margin-right: 40px;
+  flex-shrink: 0; /* evita encolher */
 }
 
-/* Classe específica para centralizar a logo na página inicial */
-.centered-logo {
-  display: flex;
-  justify-content: center;
-  margin-right: 0;
-  width: 100%;
-}
-
+/* Ajusta o tamanho da imagem e mantém hover */
 .logo img {
   height: 60px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .logo img:hover {
   transform: scale(1.05);
 }
 
-/* Removendo o título H1 da logo */
-.logo h1 {
-  display: none;
+/* Navegação principal, flex-grow para expandir e ocupar espaço disponível */
+.main-nav {
+  flex-grow: 0;
+  display: flex;
+  justify-content: center; /* centraliza as abas de navegação */
+  
 }
 
-/* Navegação principal moderna - Modificada para ficar ao lado da logo */
-.main-nav {
-  background-color: var(--primary-green);
-  padding: 0;
-  width: auto;
-  flex-grow: 1;
+/* Botão sair fixado no canto direito */
+.logout-btn {
+  position: absolute;
+  right: 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
 }
+
 
 .nav-container {
   padding: 0;
@@ -159,6 +158,9 @@ header {
 .nav-tabs a.active {
   /* Removido background-color para o hover */
 }
+
+
+
 
 /* Conteúdo principal moderno */
 main {
@@ -1507,3 +1509,181 @@ footer::before {
   height: auto;
   border-radius: 8px;
 }
+
+/* Página Mural, CSS do feed*/ 
+
+
+    .feed {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .post {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .post-header {
+      padding: 1rem;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+      color: #262626;
+    }
+
+    .post-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .caption {
+      padding: 0.8rem 1rem;
+      font-size: 0.95rem;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+
+    .post-actions {
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 1rem;
+    }
+
+    .like-btn {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: #ed4956;
+      cursor: pointer;
+    }
+
+    .like-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .like-count {
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+      color: #262626;
+    }
+
+    .comments-list {
+      list-style: none;
+      padding: 0.5rem 1rem;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+
+    .comments-list li {
+      background: #f4f4f4;
+      margin-bottom: 4px;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .comment-form {
+      display: flex;
+      padding: 0.8rem 1rem;
+      border-top: 1px solid #eee;
+    }
+
+    .comment-form input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .comment-form button {
+      background: #006633;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-left: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .comment-form button:hover {
+      background: #004d26;
+    }
+
+    .upload-fotos {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .upload-fotos h3 {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    form#uploadForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    #fotoInput,
+    #captionInput {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      background-color: #006633;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #004b25;
+    }
+
+    /* CSS da pesquisa de clima */
+    .form-group {
+                  margin-bottom: 20px;
+                }
+
+                .rating {
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                  margin-top: 8px;
+                }
+
+                .rating input[type="radio"] {
+                  display: none;
+                }
+
+                .rating label {
+                  padding: 8px 12px;
+                  background-color: #eee;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+
+                .rating input[type="radio"]:checked + label {
+                  background-color: #006633;
+                  color: white;
+                  border-color: #006633;
+                }
