@@ -376,6 +376,36 @@
             </p>
 
             <form>
+              <style>
+                .form-group {
+                  margin-bottom: 20px;
+                }
+
+                .rating {
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                  margin-top: 8px;
+                }
+
+                .rating input[type="radio"] {
+                  display: none;
+                }
+
+                .rating label {
+                  padding: 8px 12px;
+                  background-color: #eee;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+
+                .rating input[type="radio"]:checked + label {
+                  background-color: #007bff;
+                  color: white;
+                  border-color: #007bff;
+                }
+              </style>
               <div class="form-group">
                 <label
                   >1. Como você avalia o ambiente de trabalho na sua
