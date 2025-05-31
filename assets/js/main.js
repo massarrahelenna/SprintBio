@@ -435,4 +435,115 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//grafico presente no excel
+document.addEventListener("DOMContentLoaded", function () {
+  const dados = [
+    { item: "Coesão entre Colegas", media: 2.98, favorabilidade: 66.36 },
+    { item: "Carga de Trabalho", media: 2.18, favorabilidade: 60.80 },
+    { item: "Reconhecimento", media: 3.03, favorabilidade: 69.70 },
+    { item: "Comprometimento", media: 2.91, favorabilidade: 62.34 },
+    { item: "Estilo de Gerenciamento", media: 3.12, favorabilidade: 72.73 },
+    { item: "Comunicação", media: 3.02, favorabilidade: 71.59 },
+    { item: "Treinamento e Desenvolvimento", media: 3.12, favorabilidade: 71.21 },
+    { item: "Compliance", media: 3.42, favorabilidade: 81.82 }
+  ];
 
+  const labels = dados.map(d => d.item);
+  const medias = dados.map(d => d.media);
+  const favorabilidades = dados.map(d => d.favorabilidade);
+
+  const ctx = document.getElementById("graficoClimaDimensoes").getContext("2d");
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Favorabilidade',
+          type: 'line',
+          data: favorabilidades,
+          yAxisID: 'y1',
+          borderColor: '#ee8f2f',
+          backgroundColor: '#ee8f2f',
+          tension: 0,
+          fill: false,
+          pointBackgroundColor: '#ee8f2f',
+          pointBorderColor: '#ee8f2f',
+          pointRadius: 5,
+          borderWidth: 3,
+          clip: false // ⬅️ ESSENCIAL para sobreposição
+        },
+        {
+          label: 'Média',
+          type: 'bar',
+          data: medias,
+          yAxisID: 'y',
+          backgroundColor: '#00512b',
+          borderRadius: 4
+        }
+
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'PESQUISA DE CLIMA ORGANIZACIONAL',
+          font: {
+            size: 20,
+            weight: 'bold'
+          },
+          color: '#00512b'
+        },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              const value = context.parsed.y;
+              return context.dataset.label === "Favorabilidade"
+                ? `${context.dataset.label}: ${value.toFixed(2)}%`
+                : `${context.dataset.label}: ${value.toFixed(2)}`;
+            }
+          }
+        },
+        legend: {
+          labels: {
+            color: '#333333'
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 4,
+          title: {
+            display: true,
+            text: 'Nota Média',
+            color: '#333333'
+          },
+          ticks: { color: '#333333' },
+          grid: { color: '#ecddcc' }
+        },
+        y1: {
+          beginAtZero: true,
+          max: 90,
+          position: 'right',
+          title: {
+            display: true,
+            text: 'Favorabilidade (%)',
+            color: '#333333'
+          },
+          ticks: {
+            callback: val => `${val.toFixed(0)}%`,
+            color: '#333333'
+          },
+          grid: { drawOnChartArea: false }
+        },
+        x: {
+          ticks: { color: '#333333' }
+        }
+      }
+    }
+  });
+});
