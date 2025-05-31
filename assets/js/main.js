@@ -628,7 +628,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (texto === "Idade") {
           const tdLabel = document.createElement("td");
           tdLabel.colSpan = 5;
-          tdLabel.innerHTML = `<label>${texto}: <input type="number" name="${key}" required min="0" /></label>`;
+          tdLabel.innerHTML = `<label>${texto}: <input type="number" name="${key}" required min="0" placeholder="Anos"/></label>`;
+          tr.appendChild(tdLabel);
+          tbody.appendChild(tr);
+          return;
+        }
+        if (texto === "Há quanto tempo você trabalha nesta franquia?") {
+          const tdLabel = document.createElement("td");
+          tdLabel.colSpan = 5;
+          tdLabel.innerHTML = `<label>${texto}: <input type="number" name="${key}" required min="0" placeholder="Anos" /></label>`;
           tr.appendChild(tdLabel);
           tbody.appendChild(tr);
           return;
