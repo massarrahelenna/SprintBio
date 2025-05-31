@@ -547,3 +547,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+// baixar o excel
+function baixarExcel() {
+  const link = document.createElement("a");
+  link.href = "/assets/dados/BIOMUNDO-ANALISES.xlsx";
+  link.download = "BIOMUNDO - ANALISES.xlsx"; // Nome do arquivo para o usuário
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// baixar graficos
+function exportarGrafico() {
+  const canvas = document.getElementById('graficoClimaDimensoes');
+
+  // Cria um novo canvas com fundo branco
+  const canvasExport = document.createElement('canvas');
+  canvasExport.width = canvas.width;
+  canvasExport.height = canvas.height;
+
+  const ctx = canvasExport.getContext('2d');
+
+  // Preenche com branco
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvasExport.width, canvasExport.height);
+
+  // Desenha o gráfico original em cima
+  ctx.drawImage(canvas, 0, 0);
+
+  // Gera o download
+  const url = canvasExport.toDataURL('image/png');
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'grafico_clima.png'; // nome fixo correto
+  a.click();
+}
+
