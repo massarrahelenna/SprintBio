@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //tabela de respostas por franquia
 document.addEventListener("DOMContentLoaded", function () {
-  fetch('/assets/dados/biomundo_respostas_final_formatado.json')
+  fetch('/assets/dados/repostas_form.json')
     .then(response => {
       if (!response.ok) throw new Error("Erro ao carregar o JSON.");
       return response.json();
@@ -583,3 +583,228 @@ function exportarGrafico() {
   a.click();
 }
 
+// carregar perguntas formulario
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("/assets/dados/perguntas_forms.json")
+    .then((res) => res.json())
+    .then((perguntas) => {
+      const container = document.getElementById("questionario");
+      if (!container) return;
+
+      const opcoesTexto = [
+        "1. Discordo totalmente",
+        "2. Mais discordo que concordo",
+        "3. Mais concordo que discordo",
+        "4. Concordo totalmente"
+      ];
+
+      // Cria a tabela
+      const table = document.createElement("table");
+      table.className = "questionario-tabela";
+
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+
+      const thPergunta = document.createElement("th");
+      thPergunta.textContent = "Pergunta";
+      headerRow.appendChild(thPergunta);
+
+      opcoesTexto.forEach((texto) => {
+        const th = document.createElement("th");
+        th.textContent = texto;
+        headerRow.appendChild(th);
+      });
+
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+
+      Object.entries(perguntas).forEach(([key, texto]) => {
+        const tr = document.createElement("tr");
+
+        // Tratamentos especiais
+        if (texto === "Idade") {
+          const tdLabel = document.createElement("td");
+          tdLabel.colSpan = 5;
+          tdLabel.innerHTML = `<label>${texto}: <input type="number" name="${key}" required min="0" /></label>`;
+          tr.appendChild(tdLabel);
+          tbody.appendChild(tr);
+          return;
+        }
+
+        if (texto === "Como você se identifica?") {
+          const tdLabel = document.createElement("td");
+          tdLabel.colSpan = 5;
+          const select = document.createElement("select");
+          select.name = key;
+          select.required = true;
+
+          ["", "Masculino", "Feminino", "Outro", "Prefiro não dizer"].forEach((opt) => {
+            const option = document.createElement("option");
+            option.value = opt;
+            option.textContent = opt || "Selecione...";
+            select.appendChild(option);
+          });
+
+          tdLabel.innerHTML = `<label>${texto}: </label>`;
+          tdLabel.appendChild(select);
+          tr.appendChild(tdLabel);
+          tbody.appendChild(tr);
+          return;
+        }
+
+        if (texto.includes("Franquia:")) {
+          const tdLabel = document.createElement("td");
+          tdLabel.colSpan = 5;
+          const select = document.createElement("select");
+          select.name = key;
+          select.required = true;
+
+          const franquias = [
+            "Bio Shopping DF Plaza", "Bio Sams Club Águas Claras", "Bio Araucárias", "Bio Castanheiras",
+            "Bio Águas Claras Shopping", "Bio Boulevard Shopping", "Bio Brasília Shopping",
+            "Bio Shopping Liberty Mall", "Bio 105 Norte", "Bio Plaza Norte", "Bio 210 Norte",
+            "Bio Sams Club Asa Norte", "Bio Assaí Norte", "Bio Shopping Conjunto Nacional",
+            "Bio Venâncio Shopping", "Bio Mundo W3 Sul", "Bio 105 Sul", "Bio 113 Sul", "Bio Pátio Brasil",
+            "Bio Mundo 203 Sul", "Bio JK Shopping", "Bio Terraço Shopping", "Bio QI 1 Gama",
+            "Bio Carrefour Sul Guará", "Bio QE 30 Guará", "Bio Shopping Iguatemi", "Bio Taquari",
+            "Bio Aeroporto - Desembarque", "Bio Aeroporto - Embarque", "Bio Gilberto Salomão",
+            "Bio Jardim Botânico", "Bio Lago Sul", "Bio Noroeste", "Bio Taguatinga Shopping",
+            "Bio Planaltina", "Bio Mundo Castelo Forte", "Bio Sobradinho", "Bio 303 Sudoeste",
+            "Bio 302 Sudoeste", "Bio Vicente Pires", "Bio Assaí Sia"
+          ];
+
+          const defaultOpt = document.createElement("option");
+          defaultOpt.value = "";
+          defaultOpt.textContent = "Selecione a franquia...";
+          defaultOpt.disabled = true;
+          defaultOpt.selected = true;
+          select.appendChild(defaultOpt);
+
+          franquias.forEach(f => {
+            const option = document.createElement("option");
+            option.value = f;
+            option.textContent = f;
+            select.appendChild(option);
+          });
+
+          tdLabel.innerHTML = `<label>${texto}: </label>`;
+          tdLabel.appendChild(select);
+          tr.appendChild(tdLabel);
+          tbody.appendChild(tr);
+          return;
+        }
+
+        if (texto.includes("0 a 10")) {
+          const tdLabel = document.createElement("td");
+          tdLabel.colSpan = 5;
+          const containerRadio = document.createElement("div");
+          containerRadio.style.display = "flex";
+          containerRadio.style.flexWrap = "wrap";
+          containerRadio.style.gap = "8px";
+          containerRadio.style.marginTop = "5px";
+
+          for (let i = 0; i <= 10; i++) {
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = key;
+            input.value = i;
+            input.id = `${key}_${i}`;
+
+            const label = document.createElement("label");
+            label.htmlFor = input.id;
+            label.textContent = i;
+
+            containerRadio.appendChild(input);
+            containerRadio.appendChild(label);
+          }
+
+          tdLabel.innerHTML = `<label>${texto}</label>`;
+          tdLabel.appendChild(containerRadio);
+          tr.appendChild(tdLabel);
+          tbody.appendChild(tr);
+          return;
+        }
+
+        // Caso padrão: pergunta com 4 colunas
+        const tdPergunta = document.createElement("td");
+        tdPergunta.textContent = texto;
+        tr.appendChild(tdPergunta);
+
+        for (let i = 1; i <= 4; i++) {
+          const td = document.createElement("td");
+
+          const label = document.createElement("label");
+          label.className = "radio-opcao";
+
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = key;
+          input.value = i;
+          input.id = `${key}_${i}`;
+          input.required = true;
+
+          const texto = document.createElement("span");
+          texto.textContent = `${i}`;
+
+          label.appendChild(input);
+          label.appendChild(texto);
+          td.appendChild(label);
+          tr.appendChild(td);
+        }
+
+        tbody.appendChild(tr);
+      });
+
+      table.appendChild(tbody);
+      container.appendChild(table);
+    })
+    .catch((err) => console.error("Erro ao carregar perguntas:", err));
+});
+
+
+// enviar form
+let respostas_form_site = [];
+
+document.getElementById("enviarFormulario").addEventListener("click", function () {
+  const dados = {};
+  let formValido = true;
+
+  // 1. Campos demográficos
+  const inputsDemograficos = document.querySelectorAll("#dados-demograficos input, #dados-demograficos select");
+  inputsDemograficos.forEach((el) => {
+    if (!el.checkValidity()) {
+      formValido = false;
+      el.style.borderColor = "red";
+    } else {
+      el.style.borderColor = "#ccc";
+      dados[el.name] = el.value;
+    }
+  });
+
+  // 2. Escala
+  const perguntasEscala = document.querySelectorAll("#questionario input[type='radio']:checked");
+  perguntasEscala.forEach((input) => {
+    dados[input.name] = input.value;
+  });
+
+  // 3. Verifica se todas foram respondidas
+  const totalPerguntas = document.querySelectorAll("#questionario tbody tr").length;
+  if (perguntasEscala.length < totalPerguntas) {
+    alert("Por favor, responda todas as perguntas do questionário.");
+    formValido = false;
+  }
+
+  // 4. Armazena a resposta
+  if (formValido) {
+    respostas_form_site.push(dados);
+    console.log("Resposta registrada:", dados);
+    alert("Obrigado! Suas respostas foram registradas com sucesso.");
+
+    // Opcional: resetar formulário
+    document.querySelectorAll("input[type='radio']").forEach(r => r.checked = false);
+    document.querySelectorAll("#dados-demograficos input, #dados-demograficos select").forEach(f => f.value = "");
+  }
+});
