@@ -631,74 +631,14 @@
         <div id="monitoramento" class="tab-content tab-pane">
           <h2>Monitoramento de Clima Organizacional</h2>
 
-          <div class="card">
-            <h3>Visão Geral da Rede</h3>
-            <div class="dashboard">
-              <div class="chart-container">
-                <h4 class="chart-title">Índice de Satisfação por Franquia</h4>
-                <canvas id="satisfacaoRedeChart"></canvas>
-              </div>
-
-              <div
-                style="
-                  display: grid;
-                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                  gap: 20px;
-                  margin-top: 30px;
-                "
-              >
-                <div class="chart-container">
-                  <h4 class="chart-title">Engajamento Médio</h4>
-                  <canvas id="engajamentoRedeChart"></canvas>
-                </div>
-
-                <div class="chart-container">
-                  <h4 class="chart-title">Avaliação de Liderança</h4>
-                  <canvas id="liderancaRedeChart"></canvas>
-                </div>
-              </div>
-            </div>
+          <div id="tabelaClima"></div>
+          
+          <div id="graficoConfiabilidade">
+            <canvas id="graficoClimaDimensoes" width="1000" height="600"></canvas>
           </div>
 
-          <div class="card">
-            <h3>Resultados Detalhados por Franquia</h3>
-
-            <div class="form-group">
-              <label for="franquiaResultados">Selecione a Franquia:</label>
-              <select id="franquiaResultados" name="franquiaResultados">
-                <option value="centro">Bio Shopping DF Plaza</option>
-                <option value="norte">Bio Sams Club Águas Claras</option>
-                <option value="sul">Bio Araucárias</option>
-                <option value="leste">Bio Castanheiras</option>
-                <option value="oeste">Bio Águas Claras Shopping</option>
-              </select>
-            </div>
-
-            <div class="dashboard">
-              <div class="chart-container">
-                <h4 class="chart-title">Resultados da Pesquisa de Clima</h4>
-                <canvas id="climaFranquiaChart"></canvas>
-              </div>
-
-              <div
-                style="
-                  display: grid;
-                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                  gap: 20px;
-                  margin-top: 30px;
-                "
-              >
-                <div class="chart-container">
-                  <h4 class="chart-title">Distribuição de Respostas</h4>
-                  <canvas id="distribuicaoRespostasChart"></canvas>
-                </div>
-
-                <div class="chart-container">
-                  <h4 class="chart-title">Evolução Temporal</h4>
-                  <canvas id="evolucaoTemporalChart"></canvas>
-                </div>
-              </div>
-            </div>
+          <div id="respostasPorFranquia">
+            <canvas id="graficoRespostasPorFranquia" width="900" height="500"></canvas>
           </div>
 
           <div class="card">
@@ -776,8 +716,8 @@
                 margin-top: 20px;
               "
             >
-              <button class="btn">Exportar Relatório Completo</button>
-              <button class="btn">Exportar Gráficos</button>
+              <button class="btn" onclick="baixarExcel()">Exportar Relatório Completo</button>
+              <button class="btn" onclick="exportarGrafico()">Exportar Gráficos</button>
               <button class="btn">Exportar Comentários</button>
             </div>
           </div>
