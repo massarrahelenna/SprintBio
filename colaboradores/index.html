@@ -294,146 +294,77 @@
             <div style="margin-top: 30px; text-align: center;">
               <button id="enviarFormulario" class="btn-enviar">Enviar respostas</button>
             </div>
-
           </div>
-        <!-- Aba Gaia a IA -->
-        <div id="gaia" class="tab-content tab-pane" style="height: 100vh; padding: 0; margin: 0;">
-          <div class="gaia-chat-wrapper">
-            <div class="gaia-chat-header">
-              <h2>Gaia a IA</h2>
-              <p>Converse com nossa assistente virtual sobre a empresa, produtos e carreira.</p>
-            </div>
+          <!-- SE NÃO FECHAR ESSA DIV DA UMA MERDA CABULOSA -->
+          </div>
+    
+    
+          <!-- Aba Gaia a IA -->
+<div id="gaia" class="tab-content tab-pane p-4">
+  <h2 class="mb-4"><i></i>Gaia a IA</h2>
 
-            <div id="gaia-chat-messages" class="gaia-chat-messages"></div>
+  <div class="card mb-4 shadow-sm border-0 rounded">
+    <div class="card-body">
+      <h4 class="card-title"><i></i>Converse com a Gaia</h4>
+      <p>
+        Use o botão de chat no canto inferior direito da tela para conversar com a Gaia, nossa assistente virtual que pode responder suas dúvidas sobre a empresa, produtos e processos internos.
+      </p>
+      <p>
+        <strong>Dica:</strong> Você pode clicar no botão <i class="fas fa-comment text-secondary"></i> a qualquer momento para iniciar ou continuar sua conversa, mesmo quando estiver em outras páginas.
+      </p>
+    </div>
+  </div>
 
-            <div class="gaia-chat-input">
-              <input type="text" id="gaia-user-input" placeholder="Digite sua pergunta..." />
-              <button class="btn btn-send" onclick="enviarMensagem()">Enviar</button>
+  <div class="card shadow-sm border-0 rounded">
+    <div class="card-body">
+      <h4 class="card-title"><i></i>Tópicos Populares</h4>
+
+      <div class="row g-3 mt-3">
+        <!-- Tópico 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-light shadow-sm">
+            <div class="card-body">
+              <h4 class="card-subtitle mb-2"><i></i>Produtos Naturais</h4>
+              <p class="card-text">Tire dúvidas sobre os produtos Bio Mundo, ingredientes, benefícios e recomendações.</p>
+              <button class="btn btn-outline-success w-100 topic-btn"
+                onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Me fale sobre os produtos naturais', 500);">
+                Perguntar
+              </button>
             </div>
           </div>
         </div>
 
-<style>
-  .gaia-chat-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
-}
+        <!-- Tópico 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-light shadow-sm">
+            <div class="card-body">
+              <h4 class="card-subtitle mb-2"><i></i>Comunidade Bio Mundo</h4>
+              <p class="card-text">Saiba mais sobre eventos, iniciativas e valores da nossa comunidade.</p>
+              <button class="btn btn-outline-info w-100 topic-btn"
+                onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'O que é a comunidade Bio Mundo?', 500);">
+                Perguntar
+              </button>
+            </div>
+          </div>
+        </div>
 
-.gaia-chat-header {
-  background-color: #28a745;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.gaia-chat-messages {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: #fff;
-}
-
-.gaia-chat-input {
-  display: flex;
-  padding: 15px;
-  background: #f1f1f1;
-  border-top: 1px solid #ddd;
-}
-
-.gaia-chat-input input {
-  flex: 1;
-  padding: 12px 15px;
-  border-radius: 30px;
-  border: 1px solid #ccc;
-  outline: none;
-  font-size: 15px;
-  transition: 0.2s ease-in-out;
-}
-
-.gaia-chat-input input:focus {
-  border-color: #28a745;
-}
-
-.btn.btn-send {
-  margin-left: 10px;
-  padding: 12px 25px;
-  background-color: #28a745;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.btn.btn-send:hover {
-  background-color: #218838;
-}
-
-.msg-user, .msg-bot {
-  max-width: 80%;
-  margin-bottom: 10px;
-  padding: 12px 15px;
-  border-radius: 20px;
-  font-size: 14px;
-  line-height: 1.5;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.msg-user {
-  background: #d4edda;
-  align-self: flex-end;
-  margin-left: auto;
-}
-
-.msg-bot {
-  background: #e2e3e5;
-  align-self: flex-start;
-  margin-right: auto;
-}
-
-</style>
-
-
-<script>
-function sendMessage(message = null) {
-  const input = document.getElementById('chat-input');
-  const chatWindow = document.getElementById('chat-window');
-  const userText = message || input.value.trim();
-  if (!userText) return;
-
-  // Exibir mensagem do usuário
-  const userMsg = document.createElement('div');
-  userMsg.className = 'chat-message user';
-  userMsg.innerText = userText;
-  chatWindow.appendChild(userMsg);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
-
-  input.value = '';
-
-  // Simular resposta da IA
-  setTimeout(() => {
-    const botMsg = document.createElement('div');
-    botMsg.className = 'chat-message bot';
-    botMsg.innerText = getBotResponse(userText);
-    chatWindow.appendChild(botMsg);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-  }, 600);
-}
-
-function getBotResponse(message) {
-  const msg = message.toLowerCase();
-  if (msg.includes('produtos')) return 'A Bio Mundo oferece uma variedade de produtos naturais, veganos e funcionais!';
-  if (msg.includes('comunidade')) return 'A Comunidade Bio Mundo promove eventos, bem-estar e sustentabilidade.';
-  if (msg.includes('carreira') || msg.includes('empresa')) return 'Você pode crescer na empresa através de treinamentos, certificações e plano de carreira.';
-  return 'Desculpe, não entendi sua pergunta. Tente reformular ou pergunte sobre produtos, comunidade ou carreira.';
-}
-</script>
+        <!-- Tópico 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-light shadow-sm">
+            <div class="card-body">
+              <h4 class="card-subtitle mb-2"><i></i>Carreira e Desenvolvimento</h4>
+              <p class="card-text">Informações sobre oportunidades de crescimento, treinamentos e certificações.</p>
+              <button class="btn btn-outline-warning w-100 topic-btn"
+                onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Como posso crescer na empresa?', 500);">
+                Perguntar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> <!-- row -->
+    </div>
+  </div>
+</div>
 
 
         <!-- Aba Ouvidoria -->
@@ -520,10 +451,18 @@ function getBotResponse(message) {
         <div id="hall" class="tab-content tab-pane">
           <h2>Hall da Excelência</h2>
 
+          <div class="card">
+            <h3>Reconhecimento de Excelência em Gestão de Pessoas</h3>
+            <p>
+              Aqui estão as franquias que se destacaram em gestão de pessoas ao
+              longo dos anos, reconhecidas em nossa convenção anual.
+            </p>
+
+
           <div class="award-year">
             <h3>2025</h3>
-              <ul class="award-list">
-                <li class="award-item">
+            <ul class="award-list">
+              <li class="award-item">
                    <img src="../assets/images/equipe-1.jpg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
                   <span class="award-title">1º Lugar:</span> Bio Shopping DF
                   Plaza
@@ -537,13 +476,13 @@ function getBotResponse(message) {
                   <img src="../assets/images/equipe-3.jpg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
                   <span class="award-title">3º Lugar:</span> Bio Araucárias
                 </li>
-              </ul>
+            </ul>
 
            <h4 style="margin-top: 20px; color: var(--secondary-color)">
                 Subcategorias:
               </h4>
-              <ul class="award-list">
-                <li class="award-item">
+            <ul class="award-list">
+              <li class="award-item">
                   <img src="../assets/images/talento.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
                   <span class="award-title">Prêmio Espírito de Equipe:</span>
                   Bio Águas Claras Shopping
@@ -569,12 +508,12 @@ function getBotResponse(message) {
                   Bio Sudoeste
                 </li>
               </ul>
-          </div>
+            </div>
 
           <div class="award-year">
-           <h3>2024</h3>
-              <ul class="award-list">
-                <li class="award-item">
+            <h3>2024</h3>
+            <ul class="award-list">
+              <li class="award-item">
                   <img src="../assets/images/melhorFranquia.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
                   <span class="award-title">1º Lugar:</span> Bio Sams Club Águas
                   Claras
@@ -588,13 +527,13 @@ function getBotResponse(message) {
                   <span class="award-title">3º Lugar:</span> Bio Shopping DF
                   Plaza
                 </li>
-              </ul>
+            </ul>
 
-           <h4 style="margin-top: 20px; color: var(--secondary-color)">
+            <h4 style="margin-top: 20px; color: var(--secondary-color)">
                 Subcategorias:
               </h4>
-              <ul class="award-list">
-                <li class="award-item">
+            <ul class="award-list">
+              <li class="award-item">
                   <img src="../assets/images/1-2024.jpeg" alt="Prêmio Espírito de Equipe" style="width: 200px; vertical-align: middle; margin-right: 8px;">
                   <span class="award-title">Prêmio Espírito de Equipe:</span>
                   Bio Castanheiras
@@ -620,9 +559,9 @@ function getBotResponse(message) {
                   Bio Sudoeste
                 </li>
               </ul>
+            </div>
           </div>
         </div>
-      </div>
     </main>
 
     <footer>
