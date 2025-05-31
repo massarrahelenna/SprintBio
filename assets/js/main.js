@@ -341,3 +341,98 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("tabelaClima").innerHTML = html;
 });
 
+//tabela de respostas por franquia
+document.addEventListener("DOMContentLoaded", function () {
+  fetch('/assets/dados/biomundo_respostas_final_formatado.json')
+    .then(response => {
+      if (!response.ok) throw new Error("Erro ao carregar o JSON.");
+      return response.json();
+    })
+    .then(respostas => {
+      const contagem = {};
+      respostas.forEach(r => {
+        const franquia = r.franquia || "Não especificado";
+        contagem[franquia] = (contagem[franquia] || 0) + 1;
+      });
+
+      const labels = Object.keys(contagem);
+      const valores = Object.values(contagem);
+
+      const ctx = document.getElementById('graficoRespostasPorFranquia')?.getContext('2d');
+      if (!ctx) return;
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Total de Respostas por Franquia',
+            data: valores,
+            backgroundColor: '#00512b',      // Verde institucional
+            borderColor: '#ee8f2f',          // Laranja Bio Mundo
+            borderWidth: 1
+          }]
+        },
+        options: {
+          indexAxis: 'x',
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Quantidade de Respostas por Unidade',
+              color: '#333333',
+              font: {
+                size: 18,
+                weight: 'bold'
+              }
+            },
+            tooltip: {
+              backgroundColor: '#00512b',
+              titleColor: '#ffffff',
+              bodyColor: '#ffffff'
+            },
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Número de Respostas',
+                color: '#333333'
+              },
+              ticks: {
+                color: '#333333'
+              },
+              grid: {
+                color: '#ecddcc' // Bege claro para linhas de fundo
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Franquias',
+                color: '#333333'
+              },
+              ticks: {
+                color: '#333333'
+              },
+              grid: {
+                color: '#ecddcc'
+              }
+            }
+          }
+        }
+      });
+    })
+    .catch(err => {
+      console.error("Erro ao gerar o gráfico:", err);
+      document.getElementById("respostasPorFranquia").innerHTML =
+        "<p style='color:red;'>Erro ao carregar o gráfico de respostas por franquia.</p>";
+    });
+});
+
+
+
