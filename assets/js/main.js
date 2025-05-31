@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //tabela de respostas por franquia
 document.addEventListener("DOMContentLoaded", function () {
-  fetch('/assets/dados/repostas_form.json')
+  fetch('/assets/dados/respostas_form.json')
     .then(response => {
       if (!response.ok) throw new Error("Erro ao carregar o JSON.");
       return response.json();
