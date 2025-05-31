@@ -504,71 +504,144 @@
         </div>
 
         <!-- Aba Gaia a IA -->
-        <div id="gaia" class="tab-content tab-pane">
-          <h2>Gaia a IA</h2>
+        <div id="gaia" class="tab-content tab-pane" style="height: 100vh; padding: 0; margin: 0;">
+          <div class="gaia-chat-wrapper">
+            <div class="gaia-chat-header">
+              <h2>Gaia a IA</h2>
+              <p>Converse com nossa assistente virtual sobre a empresa, produtos e carreira.</p>
+            </div>
 
-          <div class="card">
-            <div class="card-title">Conversa com a Gaia</div>
-            <p>
-              Use o botão de chat no canto inferior direito da tela para
-              conversar com a Gaia, nossa assistente virtual que pode responder
-              suas dúvidas sobre a empresa, produtos e processos internos.
-            </p>
-            <p>
-              <strong>Dica:</strong> Você pode clicar no botão
-              <i class="fas fa-comment"></i> a qualquer momento para iniciar ou
-              continuar sua conversa, mesmo quando estiver em outras páginas.
-            </p>
-          </div>
+            <div id="gaia-chat-messages" class="gaia-chat-messages"></div>
 
-          <div class="card">
-            <div class="card-title">Tópicos Populares</div>
-            <div class="topics-container">
-              <div class="topic">
-                <h4>Produtos Naturais</h4>
-                <p>
-                  Tire dúvidas sobre os produtos Bio Mundo, ingredientes,
-                  benefícios e recomendações.
-                </p>
-                <button
-                  class="btn btn-secondary topic-btn"
-                  data-topic="produtos"
-                  onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Me fale sobre os produtos naturais', 500);"
-                >
-                  Perguntar
-                </button>
-              </div>
-              <div class="topic">
-                <h4>Comunidade Bio Mundo</h4>
-                <p>
-                  Saiba mais sobre eventos, iniciativas e valores da nossa
-                  comunidade.
-                </p>
-                <button
-                  class="btn btn-secondary topic-btn"
-                  data-topic="comunidade"
-                  onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'O que é a comunidade Bio Mundo?', 500);"
-                >
-                  Perguntar
-                </button>
-              </div>
-              <div class="topic">
-                <h4>Carreira e Desenvolvimento</h4>
-                <p>
-                  Informações sobre oportunidades de crescimento, treinamentos e
-                  certificações.
-                </p>
-                <button
-                  class="btn btn-secondary topic-btn"
-                  data-topic="carreira"
-                  onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Como posso crescer na empresa?', 500);"
-                >
-                  Perguntar
-                </button>
-              </div>
+            <div class="gaia-chat-input">
+              <input type="text" id="gaia-user-input" placeholder="Digite sua pergunta..." />
+              <button class="btn btn-send" onclick="enviarMensagem()">Enviar</button>
             </div>
           </div>
         </div>
+
+<style>
+  .gaia-chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+}
+
+.gaia-chat-header {
+  background-color: #28a745;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.gaia-chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.gaia-chat-input {
+  display: flex;
+  padding: 15px;
+  background: #f1f1f1;
+  border-top: 1px solid #ddd;
+}
+
+.gaia-chat-input input {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 15px;
+  transition: 0.2s ease-in-out;
+}
+
+.gaia-chat-input input:focus {
+  border-color: #28a745;
+}
+
+.btn.btn-send {
+  margin-left: 10px;
+  padding: 12px 25px;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn.btn-send:hover {
+  background-color: #218838;
+}
+
+.msg-user, .msg-bot {
+  max-width: 80%;
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.msg-user {
+  background: #d4edda;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.msg-bot {
+  background: #e2e3e5;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+</style>
+
+
+<script>
+function sendMessage(message = null) {
+  const input = document.getElementById('chat-input');
+  const chatWindow = document.getElementById('chat-window');
+  const userText = message || input.value.trim();
+  if (!userText) return;
+
+  // Exibir mensagem do usuário
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-message user';
+  userMsg.innerText = userText;
+  chatWindow.appendChild(userMsg);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+
+  input.value = '';
+
+  // Simular resposta da IA
+  setTimeout(() => {
+    const botMsg = document.createElement('div');
+    botMsg.className = 'chat-message bot';
+    botMsg.innerText = getBotResponse(userText);
+    chatWindow.appendChild(botMsg);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }, 600);
+}
+
+function getBotResponse(message) {
+  const msg = message.toLowerCase();
+  if (msg.includes('produtos')) return 'A Bio Mundo oferece uma variedade de produtos naturais, veganos e funcionais!';
+  if (msg.includes('comunidade')) return 'A Comunidade Bio Mundo promove eventos, bem-estar e sustentabilidade.';
+  if (msg.includes('carreira') || msg.includes('empresa')) return 'Você pode crescer na empresa através de treinamentos, certificações e plano de carreira.';
+  return 'Desculpe, não entendi sua pergunta. Tente reformular ou pergunte sobre produtos, comunidade ou carreira.';
+}
+</script>
+
 
         <!-- Aba Ouvidoria -->
         <div id="ouvidoria" class="tab-content tab-pane">
@@ -656,86 +729,104 @@
 
           <div class="award-year">
             <h3>2025</h3>
-            <ul class="award-list">
-              <li class="award-item">
-                <div class="award-title">1º Lugar - Gestão de Pessoas</div>
-                <p>Bio Shopping DF Plaza</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">2º Lugar - Gestão de Pessoas</div>
-                <p>Bio Sams Club Águas Claras</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">3º Lugar - Gestão de Pessoas</div>
-                <p>Bio Araucárias</p>
-              </li>
-            </ul>
+              <ul class="award-list">
+                <li class="award-item">
+                   <img src="../assets/images/equipe-1.jpg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">1º Lugar:</span> Bio Shopping DF
+                  Plaza
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/equipe-2.jpg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">2º Lugar:</span> Bio Sams Club Águas
+                  Claras
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/equipe-3.jpg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">3º Lugar:</span> Bio Araucárias
+                </li>
+              </ul>
 
-            <h4>Subcategorias</h4>
-            <ul class="award-list">
-              <li class="award-item">
-                <div class="award-title">Prêmio Espírito de Equipe</div>
-                <p>Bio Águas Claras Shopping</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Talento Valorizado</div>
-                <p>Bio Castanheiras</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Gestão Transformadora</div>
-                <p>Bio Shopping DF Plaza</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Comunicação de Ouro</div>
-                <p>Bio Sams Club Águas Claras</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Raiz Forte</div>
-                <p>Bio Araucárias</p>
-              </li>
-            </ul>
+           <h4 style="margin-top: 20px; color: var(--secondary-color)">
+                Subcategorias:
+              </h4>
+              <ul class="award-list">
+                <li class="award-item">
+                  <img src="../assets/images/talento.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Espírito de Equipe:</span>
+                  Bio Águas Claras Shopping
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/talento2025.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Talento Valorizado:</span>
+                  Bio Castanheiras
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/transformadora.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Gestão Transformadora:</span>
+                  Bio Passeio Shopping
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/comunicacao-2025.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Comunicação de Ouro:</span>
+                  Bio Boulevard Shopping
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/raizforte.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Raiz Forte:</span>
+                  Bio Sudoeste
+                </li>
+              </ul>
           </div>
 
           <div class="award-year">
-            <h3>2024</h3>
-            <ul class="award-list">
-              <li class="award-item">
-                <div class="award-title">1º Lugar - Gestão de Pessoas</div>
-                <p>Bio Sams Club Águas Claras</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">2º Lugar - Gestão de Pessoas</div>
-                <p>Bio Shopping DF Plaza</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">3º Lugar - Gestão de Pessoas</div>
-                <p>Bio Castanheiras</p>
-              </li>
-            </ul>
+           <h3>2024</h3>
+              <ul class="award-list">
+                <li class="award-item">
+                  <img src="../assets/images/melhorFranquia.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">1º Lugar:</span> Bio Sams Club Águas
+                  Claras
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/biopremio.jpeg" alt="Medalha de prata" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">2º Lugar:</span> Bio Araucárias
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/equipe-2-2024.jpeg" alt="Medalha de bronze" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">3º Lugar:</span> Bio Shopping DF
+                  Plaza
+                </li>
+              </ul>
 
-            <h4>Subcategorias</h4>
-            <ul class="award-list">
-              <li class="award-item">
-                <div class="award-title">Prêmio Espírito de Equipe</div>
-                <p>Bio Araucárias</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Talento Valorizado</div>
-                <p>Bio Sams Club Águas Claras</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Gestão Transformadora</div>
-                <p>Bio Águas Claras Shopping</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Comunicação de Ouro</div>
-                <p>Bio Shopping DF Plaza</p>
-              </li>
-              <li class="award-item">
-                <div class="award-title">Prêmio Raiz Forte</div>
-                <p>Bio Castanheiras</p>
-              </li>
-            </ul>
+           <h4 style="margin-top: 20px; color: var(--secondary-color)">
+                Subcategorias:
+              </h4>
+              <ul class="award-list">
+                <li class="award-item">
+                  <img src="../assets/images/1-2024.jpeg" alt="Prêmio Espírito de Equipe" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Espírito de Equipe:</span>
+                  Bio Castanheiras
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/2-2024.jpeg" alt="Prêmio Talento Valorizado" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Talento Valorizado:</span>
+                  Bio Águas Claras Shopping
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/3-2024.jpeg" alt="Prêmio Gestão Transformadora" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Gestão Transformadora:</span>
+                  Bio Boulevard Shopping
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/comunicacao.jpeg" alt="Prêmio Comunicação de Ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Comunicação de Ouro:</span>
+                  Bio Passeio Shopping
+                </li>
+                <li class="award-item">
+                  <img src="../assets/images/raiz2024.jpeg" alt="Medalha de ouro" style="width: 200px; vertical-align: middle; margin-right: 8px;">
+                  <span class="award-title">Prêmio Raiz Forte:</span>
+                  Bio Sudoeste
+                </li>
+              </ul>
           </div>
         </div>
       </div>
