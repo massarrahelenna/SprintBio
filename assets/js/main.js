@@ -297,3 +297,47 @@ function inicializarFiltroCampanha() {
   filtrarGaleria(filtro.value);
 }
 
+// JS para os graficos da pesquisa de clima
+document.addEventListener("DOMContentLoaded", function () {
+  const dadosTabela = [
+    { item: "Coesão entre Colegas", media: 2.98, favorabilidade: "66,36%" },
+    { item: "Carga de Trabalho", media: 2.18, favorabilidade: "60,80%" },
+    { item: "Reconhecimento", media: 3.03, favorabilidade: "69,70%" },
+    { item: "Comprometimento", media: 2.91, favorabilidade: "62,34%" },
+    { item: "Estilo de Gerenciamento", media: 3.12, favorabilidade: "72,73%" },
+    { item: "Comunicação", media: 3.02, favorabilidade: "71,59%" },
+    { item: "Treinamento e Desenvolvimento", media: 3.12, favorabilidade: "71,21%" },
+    { item: "Existe integração entre colegas e funcionários nessa empresa", media: 3.42, favorabilidade: "81,82%" }
+  ];
+
+  // Criar tabela
+  let html = `
+    <table style="width: 100%; border-collapse: collapse; font-family: sans-serif;">
+      <thead>
+        <tr style="background-color: #f0f0f0;">
+          <th style="border: 1px solid #ccc; padding: 8px;">#</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Dimensão / Item Consolidado</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Nota Média (de 0 a 4)</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Favorabilidade</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  dadosTabela.forEach((d, i) => {
+    html += `
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px; text-align: center;">${i + 1}</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">${d.item}</td>
+        <td style="border: 1px solid #ccc; padding: 8px; text-align: center;">${d.media.toFixed(2)}</td>
+        <td style="border: 1px solid #ccc; padding: 8px; text-align: center;">${d.favorabilidade}</td>
+      </tr>
+    `;
+  });
+
+  html += `</tbody></table>`;
+
+  // Inserir tabela na div com id="tabelaClima"
+  document.getElementById("tabelaClima").innerHTML = html;
+});
+
