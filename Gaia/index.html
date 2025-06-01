@@ -1,0 +1,38 @@
+<!-- Aba Gaia a IA -->
+<div id="gaia" class="tab-content tab-pane p-4">
+  <h2 class="mb-4"><i></i>Gaia a IA</h2>
+
+  <div class="card mb-4 shadow-sm border-0 rounded">
+    <div class="card-body">
+      <h4 class="card-title"><i></i>Converse com a Gaia</h4>
+      <p>
+        Use o botão de chat no canto inferior direito da tela para conversar com a Gaia, nossa assistente virtual que pode responder suas dúvidas sobre a empresa, produtos e processos internos.
+      </p>
+      <p>
+        <strong>Dica:</strong> Você pode clicar no botão <i class="fas fa-comment text-secondary"></i> a qualquer momento para iniciar ou continuar sua conversa, mesmo quando estiver em outras páginas.
+      </p>
+    </div>
+  </div>
+
+  <!-- Aqui adiciona o iframe da IA -->
+  <div class="card shadow-sm border-0 rounded">
+    <div class="card-body p-0" style="height: 600px;">
+      <iframe
+        id="iframe-gaia"
+        src="http://localhost:7860/"
+        width="100%"
+        height="100%"
+        style="border:none;"
+        allow="clipboard-write"
+        title="Interface da IA Gaia">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  function enviarMensagemParaIA(mensagem) {
+    const iframe = document.getElementById('iframe-gaia');
+    iframe.contentWindow.postMessage(mensagem, 'http://localhost:7860');
+  }
+</script>

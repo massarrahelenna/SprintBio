@@ -648,50 +648,72 @@
           </div>
         </div>
 
-        <!-- Aba GAIA A IA -->
-        <div id="gaia" class="tab-content tab-pane">
-          <h2>GAIA - A Inteligência Artificial da Biomundo</h2>
+        <!-- Aba Gaia a IA -->
+<div id="gaia" class="tab-content tab-pane p-4">
+  <h2 class="mb-4"><i></i>Gaia a IA</h2>
 
-          <div
-            class="card"
-            style="
-              display: flex;
-              flex-wrap: wrap;
-              align-items: center;
-              gap: 30px;
-            "
-          >
-            <div style="flex: 1; min-width: 300px">
-              <img
-                src="../assets/images/gaia-ai.jpg"
-                alt="Gaia IA"
-                style="width: 100%; border-radius: 8px"
-              />
-            </div>
-            <div style="flex: 2; min-width: 300px">
-              <p> 
-                Gaia é a nossa nova parceira na Biomundo, pronta para ajudar
-                você no dia a dia! Com o nome inspirado na ideia de fertilidade
-                e equilíbrio, ela reflete nosso compromisso com práticas
-                sustentáveis e éticas. Você pode contar com a Gaia para tirar
-                dúvidas sobre gestão de pessoas, consultar o Manual do
-                Franqueado Bio+ e saber mais sobre o Programa Comunidade Bio+.
-              </p>
+  <div class="card mb-4 shadow-sm border-0 rounded">
+    <div class="card-body">
+      <h4 class="card-title"><i></i>Converse com a Gaia</h4>
+      <p>
+        Use o botão de chat no canto inferior direito da tela para conversar com a Gaia, nossa assistente virtual que pode responder suas dúvidas sobre a empresa, produtos e processos internos.
+      </p>
+      <p>
+        <strong>Dica:</strong> Você pode clicar no botão <i class="fas fa-comment text-secondary"></i> a qualquer momento para iniciar ou continuar sua conversa, mesmo quando estiver em outras páginas.
+      </p>
+    </div>
+  </div>
 
-              <p>
-                Ela é uma grande aliada para criar um ambiente de trabalho
-                positivo, sempre pronta para compartilhar boas práticas e apoiar
-                o seu crescimento profissional. Gaia está aqui para fortalecer
-                nosso espírito de comunidade, unindo franqueados, funcionários e
-                a sede da Biomundo, e ajudando a tornar a Biomundo um lugar
-                ainda melhor para todos nós.
-              </p>
+  <div class="card shadow-sm border-0 rounded">
+    <div class="card-body">
+      <h4 class="card-title"><i></i>Tópicos Populares</h4>
 
-              <a href="#" class="btn" onclick="document.getElementById('chat-button').click()" style="margin-top: 15px">Conversar com a Gaia</a>
-
+      <div class="row g-3 mt-3">
+        <!-- Tópico 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-light shadow-sm">
+            <div class="card-body">
+              <h4 class="card-subtitle mb-2"><i></i>Produtos Naturais</h4>
+              <p class="card-text">Tire dúvidas sobre os produtos Bio Mundo, ingredientes, benefícios e recomendações.</p>
+              <button class="btn btn-outline-success w-100 topic-btn"
+                onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Me fale sobre os produtos naturais', 500);">
+                Perguntar
+              </button>
             </div>
           </div>
         </div>
+
+        <!-- Tópico 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-light shadow-sm">
+            <div class="card-body">
+              <h4 class="card-subtitle mb-2"><i></i>Comunidade Bio Mundo</h4>
+              <p class="card-text">Saiba mais sobre eventos, iniciativas e valores da nossa comunidade.</p>
+              <button class="btn btn-outline-info w-100 topic-btn"
+                onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'O que é a comunidade Bio Mundo?', 500);">
+                Perguntar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-light shadow-sm">
+            <div class="card-body">
+              <h4 class="card-subtitle mb-2"><i></i>Carreira e Desenvolvimento</h4>
+              <p class="card-text">Informações sobre oportunidades de crescimento, treinamentos e certificações.</p>
+              <button class="btn btn-outline-warning w-100 topic-btn"
+                onclick="document.getElementById('chat-button').click(); setTimeout(() => document.getElementById('chat-input').value = 'Como posso crescer na empresa?', 500);">
+                Perguntar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> <!-- row -->
+    </div>
+  </div>
+</div>
 
         <!-- Aba MONITORAMENTO DE CLIMA ORGANIZACIONAL -->
         <div id="monitoramento" class="tab-content tab-pane">

@@ -1287,6 +1287,31 @@
             </div>
           </div>
 
+          <script>
+  const filtroSelect = document.getElementById("filtroCampanha");
+  const galleryItems = document.querySelectorAll(".gallery-item");
+
+  filtroSelect.addEventListener("change", function () {
+    const filtro = this.value;
+
+    galleryItems.forEach((item) => {
+      const campanha = item.getAttribute("data-campanha");
+
+      if (campanha === filtro) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+
+  // Opcional: exibir apenas os itens da campanha inicialmente selecionada
+  window.addEventListener("DOMContentLoaded", () => {
+    filtroSelect.dispatchEvent(new Event("change"));
+  });
+</script>
+
+
           <div class="card">
             <h3>Histórico de Participação</h3>
 
