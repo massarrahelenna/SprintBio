@@ -1725,3 +1725,109 @@ button[type="submit"]:hover {
   transform: scale(1.5);
   cursor: pointer;
 }
+
+
+/* Campo de texto, número e seleção */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  max-width: 250px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 2px solid #00512b;
+  border-radius: 6px;
+  font-family: 'Signika', sans-serif;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #fdfdfd;
+  transition: border-color 0.3s, box-shadow 0.2s, background-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #ee8f2f;
+  box-shadow: 0 0 5px rgba(238, 143, 47, 0.4);
+  outline: none;
+}
+select:hover {
+  outline: 2px solid #e6f3ec;
+  border-color: #003b20;
+  background-color: #fff; /* mantido branco */
+}
+
+/* Label dos campos */
+td label,
+.form-group label {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Signika', sans-serif;
+  color: #00512b;
+  margin-bottom: 5px;
+}
+
+/* Botão */
+.btn-enviar {
+  background-color: #00512b;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-family: 'Signika', sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar:hover {
+  background-color: #003d20;
+  transform: scale(1.02);
+}
+
+.btn-enviar:active {
+  background-color: #002a16;
+  transform: scale(0.98);
+}
+
+/* Radio com número visível e clicável */
+.radio-opcao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Signika', sans-serif;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  border: 2px solid #00512b;
+  border-radius: 6px;
+  padding: 8px 12px;
+  transition: all 0.2s;
+  width: 100%;
+  max-width: 80px;
+  margin: 0 auto;
+}
+
+.radio-opcao:hover {
+  background-color: #e6f3ec;
+}
+
+.radio-opcao input {
+  display: none;
+}
+
+.radio-opcao span {
+  pointer-events: none;
+}
+
+/* Seleção ativa (marcado) */
+input[type="radio"]:checked + span {
+  background-color: #00512b;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
