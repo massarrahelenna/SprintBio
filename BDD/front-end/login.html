@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Bio+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <img src="assets/images/bioMundo.png" alt="Logo Bio+" />
+    <h2>Portal de Acesso</h2>
+    <form id="loginForm">
+      <input type="text" id="usuario" placeholder="Usuário" required />
+      <input type="password" id="senha" placeholder="Senha" required />
+      <button type="submit" class="login-btn">Entrar</button>
+    </form>
+    <p class="error-msg" id="errorMsg">Usuário ou senha incorretos.</p>
+    <p><a href="#">Esqueceu a senha?</a></p>
+  </div>
+  
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    // Usuários válidos - só para exemplo, em produção isso fica no backend!
+    const usuarios = {
+      colab: { senha: 'colab123', pagina: 'colaboradores/index.html' }, // colab
+      gestor: { senha: 'gestor123', pagina: 'gestores/index.html' }, // gestao
+      rh: { senha: 'rh123', pagina: 'rh/index.html' } // RH
+    };
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const usuario = document.getElementById('usuario').value.trim();
+      const senha = document.getElementById('senha').value.trim();
+
+      if (usuarios[usuario] && usuarios[usuario].senha === senha) {
+        // login OK: redireciona para página do usuário
+        window.location.href = usuarios[usuario].pagina;
+      } else {
+        // login errado: mostra erro
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>404 - Página não encontrada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/style-modern.css" />
+    <link rel="stylesheet" href="../assets/css/chat-style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Signika', sans-serif;
+      }
+
+      header {
+        background-color: #00512b;
+        padding: 20px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .header-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+      .logo img {
+        height: 80px;
+      }
+
+      .main-nav {
+        margin-top: 10px;
+      }
+
+      .nav-tabs {
+        list-style: none;
+        padding: 0;
+      }
+
+      .nav-tabs li a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #ecddcc;
+        font-size: 1.2rem;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 160px);
+        text-align: center;
+        padding: 20px;
+      }
+
+      .error-code {
+        font-size: 8rem;
+        font-weight: bold;
+        color: #ae1a0a;
+      }
+
+      .error-message {
+        font-size: 1.8rem;
+        color: #333;
+      }
+
+      .home-link {
+        margin-top: 20px;
+        text-decoration: none;
+        color: #00512b;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .home-link:hover {
+        color: #ee8f2f;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <img src="../assets/images/bioMundo.png" alt="Logo Biomundo" />
+        </div>
+        <nav class="main-nav">
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="error-code">404</div>
+      <div class="error-message">Ops! A página que você procura não existe.</div>
+      <a href="../index.html" class="home-link">
+        <i class="fas fa-home"></i> Voltar à Página Inicial
+      </a>
+    </main>
+  </body>
+</html>
