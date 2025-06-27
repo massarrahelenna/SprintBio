@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Bio + Portal de Acesso</title>
+    <link rel="stylesheet" href="assets/css/style-modern.css" />
+    <link rel="stylesheet" href="assets/css/chat-style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="header-container">
+          <div class="logo centered-logo">
+            <img src="assets/images/bioMundo.png" alt="Logo Bio Mundo" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="site-selection">
+          <div class="site-options">
+            <div class="site-option">
+              <img
+                src="assets/images/colaboradores-icon.png"
+                alt="Ícone Colaboradores"
+              />
+              <h3>Biomais/Colaboradores</h3>
+              <p>
+                Portal exclusivo para colaboradores da Biomundo. Acesse
+                informações sobre sua carreira, pesquisas de clima e muito mais.
+              </p>
+              <a href="login.html" class="btn" onclick="selecionarPortal('colaboradores')">Login</a>
+            </div>
+
+            <div class="site-option">
+              <img src="assets/images/gestores-icon.png" alt="Ícone Gestores" />
+              <h3>Biomais/Gestores</h3>
+              <p>
+                Portal para franqueados, gestores e gerentes. Gerencie
+                cadastros, monitore o clima organizacional e acesse manuais.
+              </p>
+              <a href="login.html" class="btn" onclick="selecionarPortal('gestores')">Login</a>
+            </div>
+
+            <div class="site-option">
+              <img src="assets/images/rh-icon.jpeg" alt="Ícone RH" />
+              <h3>Biomais/RH</h3>
+              <p>
+                Portal exclusivo para o RH. Gerencie cadastros, monitore
+                pesquisas de clima e acompanhe requerimentos.
+              </p>
+              <a href="login.html" class="btn" onclick="selecionarPortal('rh')">Login</a> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/images/bioMundo.png" alt="Logo Biomundo" />
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+        <div class="copyright">
+          &copy; 2025 Biomundo. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+    <script>
+      function selecionarPortal(portal) {
+    localStorage.setItem('portalSelecionado', portal);
+        }
+    </script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
